@@ -1,0 +1,11 @@
+.jobseeker_profile_form{
+	width:800px;
+	border-radius: 8px;
+	margin:0 auto;
+}
+
+
+.btn-create-profile:hover{
+	color:black;
+	border:2px solid green;
+}

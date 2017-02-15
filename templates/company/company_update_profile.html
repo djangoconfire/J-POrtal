@@ -1,0 +1,39 @@
+{% extends "profile/team_leader_profile2.html" %}
+{% load staticfiles %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/company.css' %}">
+   "{{form.media}}"
+{% endblock %}
+
+{% block main %}
+    <div class="container company_profile_form">
+        <h3 style="text-decoration:underline;color:orange;">Update Company Profile</h3>
+        <div class=" well company_profile_wrapper">
+            <form action="{% url 'company:update_profile' instance.slug %}" method="post" enctype="multipart/form-data" role="form">
+                {% csrf_token %}
+
+                {% for field in form.visible_fields %}
+                    <div class="form-group{% if field.errors %} has-error{% endif %}">
+                        <label for="{{ field.label }}">{{ field.label }}</label>
+                        <label for="{{ field.label }}">{{ field.label }}</label>
+                        {{ field }}
+
+                        {% if field.help_text %}
+                             <span class="help-block">{{ field.help_text|safe }}</span>
+                        {% endif %}
+
+                        {% for error in field.errors %}
+                            <label class="control-label">{{ error }}</label>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+                  
+                 <button type="submit" class="btn btn-success ">Update Profile</button>
+
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

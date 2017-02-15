@@ -1,0 +1,3395 @@
+[
+{
+    "model": "contenttypes.contenttype",
+    "pk": 23,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 24,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 25,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 26,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 27,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 28,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 29,
+    "fields": {
+        "app_label": "company",
+        "model": "company"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 30,
+    "fields": {
+        "app_label": "jobs",
+        "model": "joblisting"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 31,
+    "fields": {
+        "app_label": "user_profile",
+        "model": "userprofile"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 32,
+    "fields": {
+        "app_label": "jobseeker",
+        "model": "jobseeker"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 33,
+    "fields": {
+        "app_label": "taggit",
+        "model": "tag"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 34,
+    "fields": {
+        "app_label": "taggit",
+        "model": "taggeditem"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 35,
+    "fields": {
+        "app_label": "location",
+        "model": "country"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 36,
+    "fields": {
+        "app_label": "location",
+        "model": "state"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 37,
+    "fields": {
+        "app_label": "location",
+        "model": "city"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 38,
+    "fields": {
+        "app_label": "jobseeker",
+        "model": "designation"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "052efln119u94tacqf5de832ni9a92fx",
+    "fields": {
+        "session_data": "YzRjNzY4NzdmZGNhMTE1MTM3OTViNWZlZTU2MzRlMjEyMzhlNWM0Yzp7Il9hdXRoX3VzZXJfaGFzaCI6IjRmNWU3NjMzMTA4YzY0NjJlNWM5ZDUwYzhmZTRkZTM0N2ZmY2U1MzUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiI0In0=",
+        "expire_date": "2016-07-04T14:20:54.021Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "r0u3402yaud13mjox0efe415klnybtjx",
+    "fields": {
+        "session_data": "MGY1MDg4M2E5ZWUxZjA1NDBlOGNhMTM3MjcyOWE5OTA0NTZlYzYwNDp7Il9hdXRoX3VzZXJfaGFzaCI6ImU5OTA5NmIxYWRmZjc1OTgyNTA5ODI1OWMxYzFkZWJmZjM4OTFlMjYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiI1In0=",
+        "expire_date": "2016-07-05T08:47:36.522Z"
+    }
+},
+{
+    "model": "company.company",
+    "pk": 1,
+    "fields": {
+        "company_name": "Analytics Vidhya",
+        "slug": "analytics-vidhya",
+        "company_website": "http://analyticsvidhya.com",
+        "company_desc": "Senior Hadoop Developer \u2013 Delhi NCR/Bangalore (6 \u2013 8 years of experience)\r\nJOBS JOBS- BIG DATA\r\nDesignation \u2013 Senior Hadoop Developer Location \u2013Delhi NCR/ Bangalore About employer \u2013 Confidential Responsibilities Qualification and Skills Required Hadoop developer with at least 2+ years \u2026",
+        "company_logo": "",
+        "contact_no": 8602218677,
+        "email": "kunal.jain@analyticsvidhya.com"
+    }
+},
+{
+    "model": "company.company",
+    "pk": 2,
+    "fields": {
+        "company_name": "Revolutr",
+        "slug": "revolutr",
+        "company_website": "http://intouchapp.com",
+        "company_desc": "majdjhhdhd",
+        "company_logo": "company_logo/back.jpg",
+        "contact_no": 8602218669,
+        "email": "mark@gmail.com"
+    }
+},
+{
+    "model": "jobs.joblisting",
+    "pk": 11,
+    "fields": {
+        "company": null,
+        "job_title": "Data Scientist",
+        "job_type": "fulltime",
+        "job_desc": "Data science is an interdisciplinary field about processes and systems to extract knowledge or insights from data in various forms, either structured or unstructured, which is a continuation of some of the data analysis fields such as statistics, data mining, and predictive analytics, similar to Knowledge Discove",
+        "job_min_ctc": "4",
+        "job_max_ctc": "9",
+        "job_min_exp": "3",
+        "job_max_exp": "9",
+        "job_location": null,
+        "current_designation": null
+    }
+},
+{
+    "model": "jobseeker.designation",
+    "pk": 1,
+    "fields": {
+        "position": "Associate Application Developer"
+    }
+},
+{
+    "model": "jobseeker.designation",
+    "pk": 2,
+    "fields": {
+        "position": "Solution Architecture"
+    }
+},
+{
+    "model": "jobseeker.designation",
+    "pk": 3,
+    "fields": {
+        "position": "Data analyst"
+    }
+},
+{
+    "model": "jobseeker.designation",
+    "pk": 4,
+    "fields": {
+        "position": "Data Scientist"
+    }
+},
+{
+    "model": "jobseeker.designation",
+    "pk": 5,
+    "fields": {
+        "position": "Web Developer"
+    }
+},
+{
+    "model": "jobseeker.designation",
+    "pk": 6,
+    "fields": {
+        "position": "UI/Ux Designer"
+    }
+},
+{
+    "model": "jobseeker.designation",
+    "pk": 7,
+    "fields": {
+        "position": "Backend Developer"
+    }
+},
+{
+    "model": "jobseeker.designation",
+    "pk": 8,
+    "fields": {
+        "position": "Frontend Developer"
+    }
+},
+{
+    "model": "jobseeker.designation",
+    "pk": 9,
+    "fields": {
+        "position": "Deputy Manager mArketing"
+    }
+},
+{
+    "model": "jobseeker.designation",
+    "pk": 10,
+    "fields": {
+        "position": "Marketing Executive"
+    }
+},
+{
+    "model": "jobseeker.designation",
+    "pk": 11,
+    "fields": {
+        "position": "Marketing Manager"
+    }
+},
+{
+    "model": "jobseeker.designation",
+    "pk": 13,
+    "fields": {
+        "position": ""
+    }
+},
+{
+    "model": "jobseeker.jobseeker",
+    "pk": 7,
+    "fields": {
+        "name": "ritu pycon",
+        "email": "leonardo@gmail.com",
+        "resume": "",
+        "profile_photo": "",
+        "address": "hhhhshshhshs",
+        "slug": "1",
+        "current_designation": null,
+        "current_employer": "",
+        "dob": null,
+        "nearest_city": "ssss",
+        "preferred_location": "",
+        "ctc": "2.56",
+        "expected_ctc": null,
+        "profile_cover_pic": "",
+        "contact_number": "8602218669",
+        "ug_course": "",
+        "ug_passing_year": null,
+        "ug_institute_name": "",
+        "pg_course": "",
+        "correct_pg_course": "",
+        "pg_passing_year": null,
+        "pg_institute_name": "",
+        "about_me": "",
+        "work_exp": "6",
+        "analytics_in_exp": "10",
+        "current_location": null,
+        "corrected_location": "Delhi"
+    }
+},
+{
+    "model": "jobseeker.jobseeker",
+    "pk": 8,
+    "fields": {
+        "name": "sharan Lobana",
+        "email": "sharan123@gmail.com",
+        "resume": "",
+        "profile_photo": "profile_photos/AAEAAQAAAAAAAAcJAAAAJDAzOTllYjYwLWI5MTUtNDk1NC1iNGExLTRiYTI4MTgzOGE5Mg.jpg",
+        "address": "Gurgaon N3/40, DLF Phase-2 nearest Landmark- DLF Square",
+        "slug": "sharan-lobana",
+        "current_designation": 7,
+        "current_employer": "Analyticsvidhya.com",
+        "dob": "2016-06-06",
+        "nearest_city": "Delhi",
+        "preferred_location": "Amritsar",
+        "ctc": "11.50",
+        "expected_ctc": "15.60",
+        "profile_cover_pic": "",
+        "contact_number": "8602218669",
+        "ug_course": "Btech",
+        "ug_passing_year": "2018",
+        "ug_institute_name": "IIT Roorkee",
+        "pg_course": "",
+        "correct_pg_course": "",
+        "pg_passing_year": null,
+        "pg_institute_name": "",
+        "about_me": "Web Developer............",
+        "work_exp": "3",
+        "analytics_in_exp": "3",
+        "current_location": null,
+        "corrected_location": null
+    }
+},
+{
+    "model": "jobseeker.jobseeker",
+    "pk": 9,
+    "fields": {
+        "name": "Kunal Jain",
+        "email": "kunal.jain@analyticsvidhya.com",
+        "resume": "",
+        "profile_photo": "profile_photos/0ddba88.jpg",
+        "address": "N3/40, Gurgaon DLF Phase-2 Nearest landmark- Gurgaon",
+        "slug": "kunal-jain",
+        "current_designation": 3,
+        "current_employer": "Analyticsvidhya.com",
+        "dob": "2016-06-06",
+        "nearest_city": "Delhi",
+        "preferred_location": "Gurgaon",
+        "ctc": "11.50",
+        "expected_ctc": "15.60",
+        "profile_cover_pic": "",
+        "contact_number": "8602218669",
+        "ug_course": "Btech",
+        "ug_passing_year": "2006",
+        "ug_institute_name": "",
+        "pg_course": "",
+        "correct_pg_course": "",
+        "pg_passing_year": null,
+        "pg_institute_name": "",
+        "about_me": "Founder and CEO @analyticsvidhya.com",
+        "work_exp": "6",
+        "analytics_in_exp": "10",
+        "current_location": null,
+        "corrected_location": null
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1500,
+    "fields": {
+        "name": " strategy",
+        "slug": "strategy"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1501,
+    "fields": {
+        "name": "supply chain",
+        "slug": "supply-chain"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1502,
+    "fields": {
+        "name": "analytics",
+        "slug": "analytics"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1503,
+    "fields": {
+        "name": "data analysis",
+        "slug": "data-analysis"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1504,
+    "fields": {
+        "name": ".net",
+        "slug": "net"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1505,
+    "fields": {
+        "name": "six sigma",
+        "slug": "six-sigma"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1506,
+    "fields": {
+        "name": "statistics",
+        "slug": "statistics"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1507,
+    "fields": {
+        "name": "data mining",
+        "slug": "data-mining"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1508,
+    "fields": {
+        "name": "excel",
+        "slug": "excel"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1509,
+    "fields": {
+        "name": "sas",
+        "slug": "sas"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1510,
+    "fields": {
+        "name": "unix",
+        "slug": "unix"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1511,
+    "fields": {
+        "name": "time series",
+        "slug": "time-series"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1512,
+    "fields": {
+        "name": "regression",
+        "slug": "regression"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1513,
+    "fields": {
+        "name": "business analysis",
+        "slug": "business-analysis"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1514,
+    "fields": {
+        "name": "business intelligence",
+        "slug": "business-intelligence"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1515,
+    "fields": {
+        "name": "presales",
+        "slug": "presales"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1516,
+    "fields": {
+        "name": "retail",
+        "slug": "retail"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1517,
+    "fields": {
+        "name": "visual basic",
+        "slug": "visual-basic"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1518,
+    "fields": {
+        "name": "bcm",
+        "slug": "bcm"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1519,
+    "fields": {
+        "name": "sql",
+        "slug": "sql"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1520,
+    "fields": {
+        "name": "java",
+        "slug": "java"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1521,
+    "fields": {
+        "name": "qlikview",
+        "slug": "qlikview"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1522,
+    "fields": {
+        "name": "sales",
+        "slug": "sales"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1523,
+    "fields": {
+        "name": "marketing",
+        "slug": "marketing"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1524,
+    "fields": {
+        "name": "market research",
+        "slug": "market-research"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1525,
+    "fields": {
+        "name": "credit card anlysis",
+        "slug": "credit-card-anlysis"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1526,
+    "fields": {
+        "name": "teradata",
+        "slug": "teradata"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1527,
+    "fields": {
+        "name": "predictive modelling",
+        "slug": "predictive-modelling"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1528,
+    "fields": {
+        "name": "finance",
+        "slug": "finance"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1529,
+    "fields": {
+        "name": "oracle",
+        "slug": "oracle"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1530,
+    "fields": {
+        "name": "abap",
+        "slug": "abap"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1531,
+    "fields": {
+        "name": "access",
+        "slug": "access"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1532,
+    "fields": {
+        "name": "accounts",
+        "slug": "accounts"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1533,
+    "fields": {
+        "name": "activeperl",
+        "slug": "activeperl"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1534,
+    "fields": {
+        "name": "actuarial science",
+        "slug": "actuarial-science"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1535,
+    "fields": {
+        "name": "sql server",
+        "slug": "sql-server"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1536,
+    "fields": {
+        "name": "consulting",
+        "slug": "consulting"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1537,
+    "fields": {
+        "name": "networking",
+        "slug": "networking"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1538,
+    "fields": {
+        "name": "powerpoint",
+        "slug": "powerpoint"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1539,
+    "fields": {
+        "name": "query",
+        "slug": "query"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1540,
+    "fields": {
+        "name": "adwords",
+        "slug": "adwords"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1541,
+    "fields": {
+        "name": "afiliate marketing",
+        "slug": "afiliate-marketing"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1542,
+    "fields": {
+        "name": "email marketing",
+        "slug": "email-marketing"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1543,
+    "fields": {
+        "name": "agile",
+        "slug": "agile"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1544,
+    "fields": {
+        "name": "scrum",
+        "slug": "scrum"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1545,
+    "fields": {
+        "name": "agriculture",
+        "slug": "agriculture"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1546,
+    "fields": {
+        "name": "ajax",
+        "slug": "ajax"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1547,
+    "fields": {
+        "name": "algorithms",
+        "slug": "algorithms"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1548,
+    "fields": {
+        "name": "amazon web services",
+        "slug": "amazon-web-services"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1549,
+    "fields": {
+        "name": "tableau",
+        "slug": "tableau"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1550,
+    "fields": {
+        "name": "dashboarding",
+        "slug": "dashboarding"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1551,
+    "fields": {
+        "name": "mis",
+        "slug": "mis"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1552,
+    "fields": {
+        "name": "statistical modelling",
+        "slug": "statistical-modelling"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1553,
+    "fields": {
+        "name": "cloud computing",
+        "slug": "cloud-computing"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1554,
+    "fields": {
+        "name": "machine learning",
+        "slug": "machine-learning"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1555,
+    "fields": {
+        "name": "r",
+        "slug": "r"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1556,
+    "fields": {
+        "name": "embedded systems",
+        "slug": "embedded-systems"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1557,
+    "fields": {
+        "name": "mysql",
+        "slug": "mysql"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1558,
+    "fields": {
+        "name": "business development",
+        "slug": "business-development"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1559,
+    "fields": {
+        "name": "android development",
+        "slug": "android-development"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1560,
+    "fields": {
+        "name": "investment banking",
+        "slug": "investment-banking"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1561,
+    "fields": {
+        "name": "angular.js",
+        "slug": "angularjs"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1562,
+    "fields": {
+        "name": "apache",
+        "slug": "apache"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1563,
+    "fields": {
+        "name": "flume",
+        "slug": "flume"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1564,
+    "fields": {
+        "name": "hadoop",
+        "slug": "hadoop"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1565,
+    "fields": {
+        "name": "hive",
+        "slug": "hive"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1566,
+    "fields": {
+        "name": "mahout",
+        "slug": "mahout"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1567,
+    "fields": {
+        "name": "pig",
+        "slug": "pig"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1568,
+    "fields": {
+        "name": "poi",
+        "slug": "poi"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1569,
+    "fields": {
+        "name": "solr",
+        "slug": "solr"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1570,
+    "fields": {
+        "name": "spark",
+        "slug": "spark"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1571,
+    "fields": {
+        "name": "storm",
+        "slug": "storm"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1572,
+    "fields": {
+        "name": "tomcat",
+        "slug": "tomcat"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1573,
+    "fields": {
+        "name": "web server",
+        "slug": "web-server"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1574,
+    "fields": {
+        "name": "apex",
+        "slug": "apex"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1575,
+    "fields": {
+        "name": "security",
+        "slug": "security"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1576,
+    "fields": {
+        "name": "network security",
+        "slug": "network-security"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1577,
+    "fields": {
+        "name": "architure",
+        "slug": "architure"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1578,
+    "fields": {
+        "name": "software development",
+        "slug": "software-development"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1579,
+    "fields": {
+        "name": "application development",
+        "slug": "application-development"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1580,
+    "fields": {
+        "name": "spss",
+        "slug": "spss"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1581,
+    "fields": {
+        "name": "portfolio management",
+        "slug": "portfolio-management"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1582,
+    "fields": {
+        "name": "artificial intelligence",
+        "slug": "artificial-intelligence"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1583,
+    "fields": {
+        "name": "asp.net",
+        "slug": "aspnet"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1584,
+    "fields": {
+        "name": "azure",
+        "slug": "azure"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1585,
+    "fields": {
+        "name": "web development",
+        "slug": "web-development"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1586,
+    "fields": {
+        "name": "backend",
+        "slug": "backend"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1587,
+    "fields": {
+        "name": "backbone.js",
+        "slug": "backbonejs"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1588,
+    "fields": {
+        "name": "banking",
+        "slug": "banking"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1589,
+    "fields": {
+        "name": "insurance",
+        "slug": "insurance"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1590,
+    "fields": {
+        "name": "statistical analysis",
+        "slug": "statistical-analysis"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1591,
+    "fields": {
+        "name": "database",
+        "slug": "database"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1592,
+    "fields": {
+        "name": "insight",
+        "slug": "insight"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1593,
+    "fields": {
+        "name": "birt",
+        "slug": "birt"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1594,
+    "fields": {
+        "name": "j2ee",
+        "slug": "j2ee"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1595,
+    "fields": {
+        "name": "c++",
+        "slug": "c"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1596,
+    "fields": {
+        "name": "plc",
+        "slug": "plc"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1597,
+    "fields": {
+        "name": "big data",
+        "slug": "big-data"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1598,
+    "fields": {
+        "name": "data analytics",
+        "slug": "data-analytics"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1599,
+    "fields": {
+        "name": "bigsql",
+        "slug": "bigsql"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1600,
+    "fields": {
+        "name": "bioinformatics",
+        "slug": "bioinformatics"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1601,
+    "fields": {
+        "name": "biostatistics",
+        "slug": "biostatistics"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1602,
+    "fields": {
+        "name": "bootstrap",
+        "slug": "bootstrap"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1603,
+    "fields": {
+        "name": "operations management",
+        "slug": "operations-management"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1604,
+    "fields": {
+        "name": "health analytics",
+        "slug": "health-analytics"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1605,
+    "fields": {
+        "name": "business analytics",
+        "slug": "business-analytics"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1606,
+    "fields": {
+        "name": "web analytics",
+        "slug": "web-analytics"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1607,
+    "fields": {
+        "name": "business analyticsretail",
+        "slug": "business-analyticsretail"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1608,
+    "fields": {
+        "name": "sap",
+        "slug": "sap"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1609,
+    "fields": {
+        "name": "",
+        "slug": ""
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1610,
+    "fields": {
+        "name": "card analytics",
+        "slug": "card-analytics"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1611,
+    "fields": {
+        "name": "sig sigma",
+        "slug": "sig-sigma"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1612,
+    "fields": {
+        "name": "classification",
+        "slug": "classification"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1613,
+    "fields": {
+        "name": "cloud applications",
+        "slug": "cloud-applications"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1614,
+    "fields": {
+        "name": "cloud",
+        "slug": "cloud"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1615,
+    "fields": {
+        "name": "clustering",
+        "slug": "clustering"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1616,
+    "fields": {
+        "name": "e-commerce",
+        "slug": "e-commerce"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1617,
+    "fields": {
+        "name": "computer vision",
+        "slug": "computer-vision"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1618,
+    "fields": {
+        "name": "ect",
+        "slug": "ect"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1619,
+    "fields": {
+        "name": "php",
+        "slug": "php"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1620,
+    "fields": {
+        "name": "card reconciliation",
+        "slug": "card-reconciliation"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1621,
+    "fields": {
+        "name": "communication",
+        "slug": "communication"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1622,
+    "fields": {
+        "name": "communication trainer",
+        "slug": "communication-trainer"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1623,
+    "fields": {
+        "name": "communications",
+        "slug": "communications"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1624,
+    "fields": {
+        "name": "credit analysis",
+        "slug": "credit-analysis"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1625,
+    "fields": {
+        "name": "underwriting",
+        "slug": "underwriting"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1626,
+    "fields": {
+        "name": "debt restructuring",
+        "slug": "debt-restructuring"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1627,
+    "fields": {
+        "name": "social responsibility",
+        "slug": "social-responsibility"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1628,
+    "fields": {
+        "name": "planning",
+        "slug": "planning"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1629,
+    "fields": {
+        "name": "correlation",
+        "slug": "correlation"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1630,
+    "fields": {
+        "name": "product development",
+        "slug": "product-development"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1631,
+    "fields": {
+        "name": "d3.js",
+        "slug": "d3js"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1632,
+    "fields": {
+        "name": "python",
+        "slug": "python"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1633,
+    "fields": {
+        "name": "stata",
+        "slug": "stata"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1634,
+    "fields": {
+        "name": "reporting",
+        "slug": "reporting"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1635,
+    "fields": {
+        "name": "visualization",
+        "slug": "visualization"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1636,
+    "fields": {
+        "name": "visualizaton",
+        "slug": "visualizaton"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1637,
+    "fields": {
+        "name": "matlab",
+        "slug": "matlab"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1638,
+    "fields": {
+        "name": "data architecture",
+        "slug": "data-architecture"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1639,
+    "fields": {
+        "name": "data intergration",
+        "slug": "data-intergration"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1640,
+    "fields": {
+        "name": "data management",
+        "slug": "data-management"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1641,
+    "fields": {
+        "name": "data warehousing",
+        "slug": "data-warehousing"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1642,
+    "fields": {
+        "name": "data science",
+        "slug": "data-science"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1643,
+    "fields": {
+        "name": "data structure",
+        "slug": "data-structure"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1644,
+    "fields": {
+        "name": "algorithm",
+        "slug": "algorithm"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1645,
+    "fields": {
+        "name": "data studio",
+        "slug": "data-studio"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1646,
+    "fields": {
+        "name": "telecom",
+        "slug": "telecom"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1647,
+    "fields": {
+        "name": "data validation",
+        "slug": "data-validation"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1648,
+    "fields": {
+        "name": "data visualization",
+        "slug": "data-visualization"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1649,
+    "fields": {
+        "name": "database management",
+        "slug": "database-management"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1650,
+    "fields": {
+        "name": "db2",
+        "slug": "db2"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1651,
+    "fields": {
+        "name": "datacenter",
+        "slug": "datacenter"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1652,
+    "fields": {
+        "name": "datastage",
+        "slug": "datastage"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1653,
+    "fields": {
+        "name": "dax",
+        "slug": "dax"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1654,
+    "fields": {
+        "name": "db testing",
+        "slug": "db-testing"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1655,
+    "fields": {
+        "name": "db",
+        "slug": "db"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1656,
+    "fields": {
+        "name": "crm",
+        "slug": "crm"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1657,
+    "fields": {
+        "name": "dba",
+        "slug": "dba"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1658,
+    "fields": {
+        "name": "dbms",
+        "slug": "dbms"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1659,
+    "fields": {
+        "name": "dca",
+        "slug": "dca"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1660,
+    "fields": {
+        "name": "dcf",
+        "slug": "dcf"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1661,
+    "fields": {
+        "name": "dcom",
+        "slug": "dcom"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1662,
+    "fields": {
+        "name": "dcs",
+        "slug": "dcs"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1663,
+    "fields": {
+        "name": "dcttc",
+        "slug": "dcttc"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1664,
+    "fields": {
+        "name": "dde",
+        "slug": "dde"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1665,
+    "fields": {
+        "name": "proc sql",
+        "slug": "proc-sql"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1666,
+    "fields": {
+        "name": "ddf",
+        "slug": "ddf"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1667,
+    "fields": {
+        "name": "debian",
+        "slug": "debian"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1668,
+    "fields": {
+        "name": "debit card",
+        "slug": "debit-card"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1669,
+    "fields": {
+        "name": "prepaid cards",
+        "slug": "prepaid-cards"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1670,
+    "fields": {
+        "name": "product management",
+        "slug": "product-management"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1671,
+    "fields": {
+        "name": "debt management",
+        "slug": "debt-management"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1672,
+    "fields": {
+        "name": "debugging",
+        "slug": "debugging"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1673,
+    "fields": {
+        "name": "decision analytics",
+        "slug": "decision-analytics"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1674,
+    "fields": {
+        "name": "decision science",
+        "slug": "decision-science"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1675,
+    "fields": {
+        "name": "decision tree",
+        "slug": "decision-tree"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1676,
+    "fields": {
+        "name": "decoding",
+        "slug": "decoding"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1677,
+    "fields": {
+        "name": "web technology",
+        "slug": "web-technology"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1678,
+    "fields": {
+        "name": "defect analysis",
+        "slug": "defect-analysis"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1679,
+    "fields": {
+        "name": "km processes",
+        "slug": "km-processes"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1680,
+    "fields": {
+        "name": "management",
+        "slug": "management"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1681,
+    "fields": {
+        "name": "programming",
+        "slug": "programming"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1682,
+    "fields": {
+        "name": "delivery management",
+        "slug": "delivery-management"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1683,
+    "fields": {
+        "name": "forecasting",
+        "slug": "forecasting"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1684,
+    "fields": {
+        "name": "derivatives",
+        "slug": "derivatives"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1685,
+    "fields": {
+        "name": "nism",
+        "slug": "nism"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1686,
+    "fields": {
+        "name": "mutual fund",
+        "slug": "mutual-fund"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1687,
+    "fields": {
+        "name": "design",
+        "slug": "design"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1688,
+    "fields": {
+        "name": "development",
+        "slug": "development"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1689,
+    "fields": {
+        "name": "\"analytics",
+        "slug": "analytics_1"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1690,
+    "fields": {
+        "name": "design\"",
+        "slug": "design_1"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1691,
+    "fields": {
+        "name": "validation engineering",
+        "slug": "validation-engineering"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1692,
+    "fields": {
+        "name": "analysis",
+        "slug": "analysis"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1693,
+    "fields": {
+        "name": "developer",
+        "slug": "developer"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1694,
+    "fields": {
+        "name": "server",
+        "slug": "server"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1695,
+    "fields": {
+        "name": "devexpress",
+        "slug": "devexpress"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1696,
+    "fields": {
+        "name": "device driver",
+        "slug": "device-driver"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1697,
+    "fields": {
+        "name": "device management",
+        "slug": "device-management"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1698,
+    "fields": {
+        "name": "device strategy",
+        "slug": "device-strategy"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1699,
+    "fields": {
+        "name": "dfa",
+        "slug": "dfa"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1700,
+    "fields": {
+        "name": "dfc",
+        "slug": "dfc"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1701,
+    "fields": {
+        "name": "dfp",
+        "slug": "dfp"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1702,
+    "fields": {
+        "name": "dfs",
+        "slug": "dfs"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1703,
+    "fields": {
+        "name": "dfsort",
+        "slug": "dfsort"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1704,
+    "fields": {
+        "name": "dfss",
+        "slug": "dfss"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1705,
+    "fields": {
+        "name": "dhcp",
+        "slug": "dhcp"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1706,
+    "fields": {
+        "name": "dhtml",
+        "slug": "dhtml"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1707,
+    "fields": {
+        "name": "dhw",
+        "slug": "dhw"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1708,
+    "fields": {
+        "name": "di",
+        "slug": "di"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1709,
+    "fields": {
+        "name": "dicom",
+        "slug": "dicom"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1710,
+    "fields": {
+        "name": "digital advertising",
+        "slug": "digital-advertising"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1711,
+    "fields": {
+        "name": "digital analytics",
+        "slug": "digital-analytics"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1712,
+    "fields": {
+        "name": "digital marketing",
+        "slug": "digital-marketing"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1713,
+    "fields": {
+        "name": "digital image processing",
+        "slug": "digital-image-processing"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1714,
+    "fields": {
+        "name": "digital radiography",
+        "slug": "digital-radiography"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1715,
+    "fields": {
+        "name": "sculptor",
+        "slug": "sculptor"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1716,
+    "fields": {
+        "name": "signal processing",
+        "slug": "signal-processing"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1717,
+    "fields": {
+        "name": "dimension",
+        "slug": "dimension"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1718,
+    "fields": {
+        "name": "ibm",
+        "slug": "ibm"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1719,
+    "fields": {
+        "name": "dipsticks",
+        "slug": "dipsticks"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1720,
+    "fields": {
+        "name": "directx",
+        "slug": "directx"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1721,
+    "fields": {
+        "name": "discriment analysis",
+        "slug": "discriment-analysis"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1722,
+    "fields": {
+        "name": "distribution management",
+        "slug": "distribution-management"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1723,
+    "fields": {
+        "name": "mapping",
+        "slug": "mapping"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1724,
+    "fields": {
+        "name": "django",
+        "slug": "django"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1725,
+    "fields": {
+        "name": "dm",
+        "slug": "dm"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1726,
+    "fields": {
+        "name": "dml",
+        "slug": "dml"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1727,
+    "fields": {
+        "name": "dmlo",
+        "slug": "dmlo"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1728,
+    "fields": {
+        "name": "dms",
+        "slug": "dms"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1729,
+    "fields": {
+        "name": "dnbi",
+        "slug": "dnbi"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1730,
+    "fields": {
+        "name": "dns",
+        "slug": "dns"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1731,
+    "fields": {
+        "name": "do",
+        "slug": "do"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1732,
+    "fields": {
+        "name": "business planning",
+        "slug": "business-planning"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1733,
+    "fields": {
+        "name": "docker",
+        "slug": "docker"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1734,
+    "fields": {
+        "name": "financing",
+        "slug": "financing"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1735,
+    "fields": {
+        "name": "documentation",
+        "slug": "documentation"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1736,
+    "fields": {
+        "name": "dojo",
+        "slug": "dojo"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1737,
+    "fields": {
+        "name": "dollar universe",
+        "slug": "dollar-universe"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1738,
+    "fields": {
+        "name": "dolphin",
+        "slug": "dolphin"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1739,
+    "fields": {
+        "name": "dom",
+        "slug": "dom"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1740,
+    "fields": {
+        "name": "doma",
+        "slug": "doma"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1741,
+    "fields": {
+        "name": "domain",
+        "slug": "domain"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1742,
+    "fields": {
+        "name": "domain consultant",
+        "slug": "domain-consultant"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1743,
+    "fields": {
+        "name": "&global support",
+        "slug": "global-support"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1744,
+    "fields": {
+        "name": "doors",
+        "slug": "doors"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1745,
+    "fields": {
+        "name": "dos",
+        "slug": "dos"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1746,
+    "fields": {
+        "name": "double click",
+        "slug": "double-click"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1747,
+    "fields": {
+        "name": "dq analyser",
+        "slug": "dq-analyser"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1748,
+    "fields": {
+        "name": "dr",
+        "slug": "dr"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1749,
+    "fields": {
+        "name": "drafting",
+        "slug": "drafting"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1750,
+    "fields": {
+        "name": "dream weaver",
+        "slug": "dream-weaver"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1751,
+    "fields": {
+        "name": "strategic initiatives",
+        "slug": "strategic-initiatives"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1752,
+    "fields": {
+        "name": "drp",
+        "slug": "drp"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1753,
+    "fields": {
+        "name": "drupal",
+        "slug": "drupal"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1754,
+    "fields": {
+        "name": "ds",
+        "slug": "ds"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1755,
+    "fields": {
+        "name": "dspace",
+        "slug": "dspace"
+    }
+},
+{
+    "model": "taggit.tag",
+    "pk": 1756,
+    "fields": {
+        "name": "item",
+        "slug": "item"
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 31,
+    "fields": {
+        "tag": 1501,
+        "content_type": 32,
+        "object_id": 7
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 32,
+    "fields": {
+        "tag": 1632,
+        "content_type": 32,
+        "object_id": 8
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 33,
+    "fields": {
+        "tag": 1507,
+        "content_type": 32,
+        "object_id": 8
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 34,
+    "fields": {
+        "tag": 1724,
+        "content_type": 32,
+        "object_id": 8
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 35,
+    "fields": {
+        "tag": 1591,
+        "content_type": 32,
+        "object_id": 8
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 36,
+    "fields": {
+        "tag": 1597,
+        "content_type": 30,
+        "object_id": 11
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 37,
+    "fields": {
+        "tag": 1503,
+        "content_type": 30,
+        "object_id": 11
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 38,
+    "fields": {
+        "tag": 1507,
+        "content_type": 30,
+        "object_id": 11
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 39,
+    "fields": {
+        "tag": 1632,
+        "content_type": 32,
+        "object_id": 9
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 40,
+    "fields": {
+        "tag": 1724,
+        "content_type": 32,
+        "object_id": 9
+    }
+},
+{
+    "model": "taggit.taggeditem",
+    "pk": 41,
+    "fields": {
+        "tag": 1503,
+        "content_type": 32,
+        "object_id": 9
+    }
+},
+{
+    "model": "location.country",
+    "pk": 3,
+    "fields": {
+        "country_name": "India"
+    }
+},
+{
+    "model": "location.state",
+    "pk": 7,
+    "fields": {
+        "country": 3,
+        "state_name": "West Bengal"
+    }
+},
+{
+    "model": "location.state",
+    "pk": 8,
+    "fields": {
+        "country": 3,
+        "state_name": "Bihar"
+    }
+},
+{
+    "model": "location.state",
+    "pk": 9,
+    "fields": {
+        "country": 3,
+        "state_name": "Maharashtra"
+    }
+},
+{
+    "model": "location.city",
+    "pk": 7,
+    "fields": {
+        "state": 7,
+        "city_name": "Kolkata"
+    }
+},
+{
+    "model": "location.city",
+    "pk": 8,
+    "fields": {
+        "state": 8,
+        "city_name": "Patna"
+    }
+},
+{
+    "model": "location.city",
+    "pk": 9,
+    "fields": {
+        "state": 9,
+        "city_name": "Mumbai"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 67,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 23,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 68,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 23,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 69,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 23,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 70,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 24,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 71,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 24,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 72,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 24,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 73,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 25,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 74,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 25,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 75,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 25,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 76,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 26,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 77,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 26,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 78,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 26,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 79,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 27,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 80,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 27,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 81,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 27,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 82,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 28,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 83,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 28,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 84,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 28,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 85,
+    "fields": {
+        "name": "Can add company",
+        "content_type": 29,
+        "codename": "add_company"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 86,
+    "fields": {
+        "name": "Can change company",
+        "content_type": 29,
+        "codename": "change_company"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 87,
+    "fields": {
+        "name": "Can delete company",
+        "content_type": 29,
+        "codename": "delete_company"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 88,
+    "fields": {
+        "name": "Can add job listing",
+        "content_type": 30,
+        "codename": "add_joblisting"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 89,
+    "fields": {
+        "name": "Can change job listing",
+        "content_type": 30,
+        "codename": "change_joblisting"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 90,
+    "fields": {
+        "name": "Can delete job listing",
+        "content_type": 30,
+        "codename": "delete_joblisting"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 91,
+    "fields": {
+        "name": "Can add user profile",
+        "content_type": 31,
+        "codename": "add_userprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 92,
+    "fields": {
+        "name": "Can change user profile",
+        "content_type": 31,
+        "codename": "change_userprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 93,
+    "fields": {
+        "name": "Can delete user profile",
+        "content_type": 31,
+        "codename": "delete_userprofile"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 94,
+    "fields": {
+        "name": "Can add job seeker",
+        "content_type": 32,
+        "codename": "add_jobseeker"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 95,
+    "fields": {
+        "name": "Can change job seeker",
+        "content_type": 32,
+        "codename": "change_jobseeker"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 96,
+    "fields": {
+        "name": "Can delete job seeker",
+        "content_type": 32,
+        "codename": "delete_jobseeker"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 97,
+    "fields": {
+        "name": "Can add Tag",
+        "content_type": 33,
+        "codename": "add_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 98,
+    "fields": {
+        "name": "Can change Tag",
+        "content_type": 33,
+        "codename": "change_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 99,
+    "fields": {
+        "name": "Can delete Tag",
+        "content_type": 33,
+        "codename": "delete_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 100,
+    "fields": {
+        "name": "Can add Tagged Item",
+        "content_type": 34,
+        "codename": "add_taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 101,
+    "fields": {
+        "name": "Can change Tagged Item",
+        "content_type": 34,
+        "codename": "change_taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 102,
+    "fields": {
+        "name": "Can delete Tagged Item",
+        "content_type": 34,
+        "codename": "delete_taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 103,
+    "fields": {
+        "name": "Can add country",
+        "content_type": 35,
+        "codename": "add_country"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 104,
+    "fields": {
+        "name": "Can change country",
+        "content_type": 35,
+        "codename": "change_country"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 105,
+    "fields": {
+        "name": "Can delete country",
+        "content_type": 35,
+        "codename": "delete_country"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 106,
+    "fields": {
+        "name": "Can add state",
+        "content_type": 36,
+        "codename": "add_state"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 107,
+    "fields": {
+        "name": "Can change state",
+        "content_type": 36,
+        "codename": "change_state"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 108,
+    "fields": {
+        "name": "Can delete state",
+        "content_type": 36,
+        "codename": "delete_state"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 109,
+    "fields": {
+        "name": "Can add city",
+        "content_type": 37,
+        "codename": "add_city"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 110,
+    "fields": {
+        "name": "Can change city",
+        "content_type": 37,
+        "codename": "change_city"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 111,
+    "fields": {
+        "name": "Can delete city",
+        "content_type": 37,
+        "codename": "delete_city"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 112,
+    "fields": {
+        "name": "Can add designation",
+        "content_type": 38,
+        "codename": "add_designation"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 113,
+    "fields": {
+        "name": "Can change designation",
+        "content_type": 38,
+        "codename": "change_designation"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 114,
+    "fields": {
+        "name": "Can delete designation",
+        "content_type": 38,
+        "codename": "delete_designation"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$24000$p2R7xBe5KeoT$xbAQuwgKOeo5H+97+jGVIy143CeBEQtL0R1WGLwOlp8=",
+        "last_login": "2016-06-20T14:22:29.366Z",
+        "is_superuser": false,
+        "username": "Johndoe",
+        "first_name": "",
+        "last_name": "",
+        "email": "johndoe345@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-06-20T14:20:53.233Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$24000$amRqESA84FlC$KA2DZboquhsVqxihWFIH+7ebKADPlwabIT+T6iO5PAg=",
+        "last_login": "2016-06-21T08:47:36.406Z",
+        "is_superuser": false,
+        "username": "TeamLeader",
+        "first_name": "",
+        "last_name": "",
+        "email": "ritu31195@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-06-20T18:27:54.604Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$24000$evMRb4eLjnZt$tmaDJZRnbIFrRHg4hVQwQL2w8tVZeZsV4LkVZB56xk8=",
+        "last_login": "2016-06-21T08:45:22.280Z",
+        "is_superuser": true,
+        "username": "hacker",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2016-06-21T05:07:18.584Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "user_profile.userprofile",
+    "pk": 3,
+    "fields": {
+        "user": 4,
+        "user_type": "team_leader"
+    }
+},
+{
+    "model": "user_profile.userprofile",
+    "pk": 4,
+    "fields": {
+        "user": 5,
+        "user_type": "team_leader"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2016-06-21T07:09:32.922Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "1",
+        "object_repr": "Associate Application Developer",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2016-06-21T07:09:45.720Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "2",
+        "object_repr": "Solution Architecture",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2016-06-21T07:10:08.985Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "3",
+        "object_repr": "Data analyst",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2016-06-21T07:10:15.849Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "4",
+        "object_repr": "Data Scientist",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2016-06-21T07:10:23.556Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "5",
+        "object_repr": "Web Developer",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2016-06-21T07:10:31.991Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "6",
+        "object_repr": "UI/Ux Designer",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2016-06-21T07:10:57.664Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "7",
+        "object_repr": "Backend Developer",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2016-06-21T07:11:06.761Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "8",
+        "object_repr": "Frontend Developer",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2016-06-21T07:12:08.332Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "9",
+        "object_repr": "Deputy Manager mArketing",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2016-06-21T07:12:30.422Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "10",
+        "object_repr": "Marketing Executive",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2016-06-21T07:13:05.488Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "11",
+        "object_repr": "Marketing Manager",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2016-06-21T07:13:10.816Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "12",
+        "object_repr": "Marketing Manager",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2016-06-21T07:13:14.807Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "13",
+        "object_repr": "",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2016-06-21T07:13:33.023Z",
+        "user": 6,
+        "content_type": 38,
+        "object_id": "12",
+        "object_repr": "Marketing Manager",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+        "action_time": "2016-06-21T08:24:02.413Z",
+        "user": 6,
+        "content_type": 32,
+        "object_id": "9",
+        "object_repr": "JobSeeker object",
+        "action_flag": 2,
+        "change_message": "Changed profile_photo and skills."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+        "action_time": "2016-06-21T08:26:24.389Z",
+        "user": 6,
+        "content_type": 32,
+        "object_id": "8",
+        "object_repr": "JobSeeker object",
+        "action_flag": 2,
+        "change_message": "Changed profile_photo and skills."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+        "action_time": "2016-06-21T08:28:08.755Z",
+        "user": 6,
+        "content_type": 32,
+        "object_id": "8",
+        "object_repr": "JobSeeker object",
+        "action_flag": 2,
+        "change_message": "Changed current_designation and skills."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+        "action_time": "2016-06-21T08:45:42.480Z",
+        "user": 6,
+        "content_type": 35,
+        "object_id": "3",
+        "object_repr": "India",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+        "action_time": "2016-06-21T08:45:47.951Z",
+        "user": 6,
+        "content_type": 36,
+        "object_id": "7",
+        "object_repr": "West Bengal",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+        "action_time": "2016-06-21T08:45:54.662Z",
+        "user": 6,
+        "content_type": 37,
+        "object_id": "7",
+        "object_repr": "Kolkata",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+        "action_time": "2016-06-21T08:46:06.300Z",
+        "user": 6,
+        "content_type": 36,
+        "object_id": "8",
+        "object_repr": "Bihar",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+        "action_time": "2016-06-21T08:46:11.885Z",
+        "user": 6,
+        "content_type": 37,
+        "object_id": "8",
+        "object_repr": "Patna",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+        "action_time": "2016-06-21T08:46:26.486Z",
+        "user": 6,
+        "content_type": 36,
+        "object_id": "9",
+        "object_repr": "Maharashtra",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+        "action_time": "2016-06-21T08:46:34.057Z",
+        "user": 6,
+        "content_type": 37,
+        "object_id": "9",
+        "object_repr": "Mumbai",
+        "action_flag": 1,
+        "change_message": "Added."
+    }
+}
+]

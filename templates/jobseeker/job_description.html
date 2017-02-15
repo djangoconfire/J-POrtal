@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+
+Job Description|{{job.company.company_name}}
+
+{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/jobs/jobs.css'%}">
+   <!--<script   src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+  <script type='text/javascript' src = "{% static 'js/jquery.min.js' %}"></script>-->
+    <script type="text/javascript"  src="{% static 'jquery-autosuggest/js/jquery.autoSuggest.minified.js' %}"></script>
+    <link href="{% static 'jquery-autosuggest/css/autoSuggest.css' %}" type="text/css" media="all" rel="stylesheet" />
+   <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+
+{% endblock %}
+
+{% block center_block %}
+
+   <div class="container job_desciption_container">
+        <div class="container job_description_wrapper">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h4 style="margin-top:40px;color:green;text-decoration:underline;">{{job.job_title}}</h4>
+                    <strong style="margin-left:20px;  "><a href="{{job.company.company_website}}">{{job.company.company_name}}</a></strong><br/>
+
+                    <small style="color:grey;margin-left:40px;">
+                        <span><i class="fa fa-briefcase"></i>{{job.job_min_exp}} -{{job.job_max_exp}}(Years)</span>
+
+                        <span style="margin-left:60px;"><i class="fa fa-map-marker"></i>{{job.job_location.city_name}}</span>
+
+                    </small>
+                     
+                </div>
+
+                <div class="col-sm-6">
+                    <img src="{{job.company.company_logo.url}}" style="width:200px;height:40px;margin-top:80px;">
+                </div>
+
+                <div class="col-sm-2">
+                
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                   <strong style="text-decoration:underline;">Key Skills:</strong>
+                     {% for skill in job.job_skills.all %}
+                         <ul>
+                           <li>{{skill}}</li>
+
+                         </ul> 
+                     {% endfor %}  
+
+                    <strong style="text-decoration:underline;height:auto;">Description</strong>
+                        <p style="color:green;text-decoration:underline;">About {{job.company.company_name}}
+                        </p>
+                        <p>{{job.company.company_desc}}</p>
+                        <p style="color:green;text-decoration:underline;">Job Description
+                        </p>
+                        <p>{{job.job_desc}}</p>   
+                </div>
+            </div>
+
+            <div class="row">
+               <div class="col-sm-12">
+
+                  {% if applied == False %}
+                    <a href="{% url 'jobseeker:successfully_apply' job.slug %}"><button class='btn btn-success'>Apply Now</button></a>
+
+                  {% else %}
+                    <button class='btn btn-primary disabled'>Already Applied</button>
+                  {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>    
+
+
+{% endblock %}
+
+

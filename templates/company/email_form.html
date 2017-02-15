@@ -1,0 +1,74 @@
+{% load i18n %}
+<html>
+
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-4">
+                    <p>
+                      <img style="margin-left:120px;" src="https://www.analyticsvidhya.com/wp-content/uploads/2014/12/analytics-logo-300x70.jpg">
+                    </p>  
+                </div>
+
+                <div class="col-sm-8">
+                    <strong>{% trans "Dear " %} {{name}}</strong> <br/>
+                    <p>Job Matching Your Profile</p>
+                </div>    
+
+            </div>
+
+            <div class="email_body_container" style="width:700px;height:150px;background-color:#fafafa;">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <strong style="color:blue;margin-left:30px;padding:10px;"margin-top:20px;>{{job_title}}&nbsp;({{min_exp}} - {{max_exp}} yrs)</strong><br/>
+                        <strong style="margin-left:40px;">{{company}}</strong>
+                        <p style="margin-left:40px;color:grey;">Location: {{job_location}}</p> 
+
+                        <p style="margin-left:40px;color:grey;">KeySkills:
+                        {% for skill in job.job_skills.all %}
+                          {{skill}}
+                        {% endfor %}
+                        </p>
+                  
+              
+                    </div>
+
+                    <div class="col-sm-4">
+
+                        {% comment %}
+
+                        {% block reset_link %}
+
+                            <a href="http://{{domain}}{% url 'jobs:apply_job' jobseeker.slug job.slug %}" type="button" style="margin-top:60px;margin-left:60px;padding:10px;width:80px;height:30px;background-color:orange;">Apply Now</a>
+
+                        {% endblock %}
+
+                        {% endcomment %}
+
+                    </div>
+
+                </div>  
+
+            </div>  
+
+        </div>        
+
+
+        <hr style="color:grey;">
+        <strong>{% trans "Thanks for using our site!" %}</strong><br/>
+
+        {% blocktrans %}
+            The {{ site_name }} team
+
+        {% endblocktrans %}
+
+    </body>
+
+</html>
+

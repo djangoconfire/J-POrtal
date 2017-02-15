@@ -1,0 +1,19 @@
+<div>
+
+{% ifequal companies.count 0 %}
+  <li style="list-style:none;margin-left:20px;">No Such Company !!</li>
+
+{% else %}
+
+  	{% for company in companies %}
+  		<li style="list-style:none;background-color:transparent;overflow:hidden;margin-left:20px;"><a href="{{company.get_absolute_url}}">{{company.company_name}}</a></li>
+  		<hr style="margin-top:2px;line-height:10px;"></hr>
+
+
+  	{% endfor %}
+
+
+{% endifequal %}  
+
+</div>
+

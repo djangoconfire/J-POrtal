@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/jobseeker/preferred_candidate.css' %}">
+{% endblock %}
+
+{% block js_block %}
+    <script type="text/javascript">
+	    $(function(){
+
+	    	$('#checkbox').click(function() {
+			   if ($('input[name="checkbox"]:checked').length > 0)
+			   {
+			     // more than one check box is checked
+			     	$('#save').removeClass('disabled');
+			     
+			   } else {
+
+			     // No check boxes are checked
+			     	$('#save').addClass('disabled');
+			    
+			   }
+		    });
+
+
+			$('.modal-dialog').css({
+         		'width': '800',
+        		'margin-left': function () {
+         		return ($(this).width() /4);
+        	}
+    		});
+
+	    });
+			
+	</script>
+
+
+{% endblock %}
+
+{% block center_block %}
+	
+	{% ifequal applications|length 0 %}
+	    {% include 'no_candidate.html' %}
+
+	{% else %}  
+
+		{% for application in applications %} 
+
+			{% if not application.mail_sent_to_shortlisted %} 
+
+			     	<h4 style="color:orange;margin-top:20px;">Mark the Company Shortlisted Candidates</h4>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Mark</th>
+								<th>Profile Picture</th>
+								<th>Candidate Name</th>
+								<th>Mobile Number</th>
+								<th>Email</th>
+							</tr>	
+						</thead>	
+
+						<form action="{% url 'company:final_shortlisted_candidates' job.company.slug job.slug %}" method="POST">
+							{% csrf_token %}
+				                <div class="container">
+				                	{% for form in formset.forms %}
+                                		{{ formset.management_form }}
+                                			{{form.id}}
+				                	
+						            	
+								        {% for form in formset %}
+
+								            <div class="row">     
+								            	<tr>
+									                <td><input type="checkbox" class="checkbox" id="checkbox_{{application.id}}" value={{form.instance.id}}></td>
+									                 
+									                <div class="col-sm-3"> 
+
+									                		{% for field in form %}
+									                	   	
+									                	     	{% if  field.name == 'profile_photo' %}
+									                				<td><img src="{{form.instance.profile_photo.url}}" style="width:60px;height:50px;border-radius:50px;"></td>
+									                			{% else %}
+									                				<td><label>{{field.value}}</label></td>
+									                			{% endif %}
+									                		{% endfor %}
+			  	
+										            </div> 
+									            </tr>  	
+								             </div>   
+								        {% endfor %}
+
+								    <div class="row">
+								    	<div class="col-sm-12">
+								    		<button type="submit" style="float:right;" id="save" class="btn btn-success">Mail to Shotlisted Candidates </button>  
+								    	</div>
+								    </div>		  
+
+							     
+							             
+							     {% endfor %}         
+				              </div>  
+				        </form>   
+
+
+			        </table> 
+
+			{% else %}     
+
+			    <h4 style="color:orange;margin-top:20px;">List of Company Shortlisted Candidates</h4>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Profile Picture</th>
+								<th>Candidate Name</th>
+								<th>Mobile Number</th>
+								<th>Email</th>
+								<th></th>
+							</tr>	
+						</thead>	
+
+						<form action="{% url 'company:final_shortlisted_candidates' job.company.slug job.slug %}" method="POST">
+							{% csrf_token %}
+				                <div class="container">
+				                	
+						            	
+								        {% for form in form_list %}
+
+								            <div class="row">     
+								            	<tr>
+									                 
+									                <div class="col-sm-3"> 
+
+									                		{% for field in form %}
+									                	   	
+									                	     	{% if  field.name == 'profile_photo' %}
+									                				<td><img src="{{form.instance.profile_photo.url}}" style="width:40px;height:40px;border-radius:40px;margin-left:20px;"></td>
+									                			{% else %}
+									                				<td><label>{{field.value}}</label></td>
+									                			{% endif %}
+									                		{% endfor %}
+
+									                		<td><a href="" data-toggle="modal" data-target="#interview" type="button" class="btn btn-success">Take Interview</a></td>
+			  	
+										            </div> 
+									            </tr>  	
+								             </div>   
+								        {% endfor %}	  
+
+							     
+							             
+							              
+				              </div>  
+				        </form>   
+
+
+			        </table> 
+
+			    {% endif %} 
+		 
+
+			        <!-- Interview modal here -->
+
+			    	<div class="modal fade" id="interview">
+	                    <div class="modal-dialog" role="document">
+	                        <div class="modal-content">
+	                            <div class="modal-header">
+	                                <h4 class="modal-title" style="padding:10px;margin-top:10px;">Interview Detail</h4>
+	                                 <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+	                               
+	                            </div>
+
+	                            <div class="modal-body">
+	                                
+	                                {% include 'company/interview.html' with interview_form=interview_form job=job  %}
+	                                
+	                         
+	                            </div> 
+
+	                        </div><!-- /.modal-content -->
+	                    </div><!-- /.modal-dialog -->
+	                </div> 
+	    {% endfor %}           
+		      
+
+	{% endifequal %}        
+
+
+
+
+{% endblock %}

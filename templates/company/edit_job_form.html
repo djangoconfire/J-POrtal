@@ -1,0 +1,27 @@
+
+<div class="well job_edit_form_container">
+    <form action="{% url 'jobs:edit_job' job.slug %}" method="post" role="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form.visible_fields %}
+            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                <label for="{{ field.label }}">{{ field.label }}</label>
+                    {{ field }}
+                {% if field.help_text %}
+                    <span class="help-block">{{ field.help_text|safe }}</span>
+                {% endif %}
+                {% for error in field.errors %}
+                    <label class="control-label">{{ error }}</label>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <div class="form-group">   
+            <button type="submit" style="float:right;" class="btn btn-success">Update Profile</button>
+        </div>
+
+
+    </form>
+        <div class="model-footer">
+            <button type="button" style="margin-left:350px;" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div>
+</div>

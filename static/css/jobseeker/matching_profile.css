@@ -1,0 +1,136 @@
+
+
+table {
+          border-collapse: separate;
+          border-spacing: 0;
+        }
+
+th,
+td {
+  padding: 10px 15px;
+
+}
+
+thead {
+  background: #395870;
+  color: #fff;
+}
+
+tbody tr:nth-child(even) {
+  background: #f0f0f2;
+}
+tr{
+    height:40px;
+}
+
+
+th {
+  font-weight: bold;
+}
+
+
+td {
+  border-bottom: 1px solid #cecfd5;
+  border-right: 1px solid #cecfd5;
+}
+
+
+td:first-child {
+  border-left: 1px solid #cecfd5;
+}
+
+
+.form-group{
+    margin: 20px;
+    z-index:1000;
+}
+
+
+a:hover{
+    color:green;
+}
+
+
+.cover-picture {
+    height: 220px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+.main-user-container {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.main-user-container .profile-picture-container {
+    border: 5px solid #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 1px rgba(136,153,166,0.15);
+    height: 200px;
+    width: 200px;
+    margin-top: -220px;
+}
+
+.main-user-container .profile-picture-container .profile-picture {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.main-user-container .full-name {
+    font-size: 150%;
+    font-weight: bold;
+    margin: 5px 0 0 0;
+    text-align: center;
+    width: 200px;
+}
+
+.main-user-container .username {
+    font-size: 110%;
+    margin-top: -5px;
+    color: gray;
+    padding: 0;
+    width: 200px;
+    text-align: center;
+}
+
+.tabs-or-stats-bar .tabs-or-stats-container .tabs-content    {
+    height: 50px;
+    padding: 12px 15px;
+    display: inline-block;
+    cursor: pointer;
+    border-bottom: none;
+    text-decoration: none;
+    transition: all .15s ease-in-out;
+    vertical-align: top;
+}
+
+.tabs-or-stats-bar .tabs-or-stats-container .tab:hover,
+.tabs-or-stats-bar .tabs-or-stats-container .tab-active {
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    border-bottom-color: #0084B4;
+}
+
+
+.btn-send-mail{
+    float:right;
+    margin-top: -60px;
+}
+
+.btn-send-message{
+    display: inline-block;
+    float:right;
+    margin-top: 10px;
+}
+
+.btn-apply-filter{
+    float:right;
+}
+
+
+
+

@@ -1,0 +1,79 @@
+
+body {
+    background-color: #f5f8fa;
+}
+
+.form-container {
+    margin: 100px auto 50px auto;
+}
+
+.form-container .form-signup {
+    width: 600px;
+    background-color: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.form-container .form-signup .title {
+    margin: 0;
+    font-size: 150%;
+}
+
+.form-container .form-signup .divider {
+    border-color: #ccc;
+    margin: 15px 0 25px 0;
+}
+
+.form-container .form-signup .wrapper {
+    overflow: hidden;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.form-container .form-signup .wrapper .alert-custom {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.form-container .form-signup .form-label {
+    display: inline-block;
+    color: #000;
+    text-align: right;
+    margin-right: 8px;
+    width: 18%;
+    font-weight: 500;
+}
+
+.form-container .form-signup .form-input {
+    display: inline-block;
+    width: 79%;
+    margin-top: 10px;
+}
+
+.form-container .form-signup .checkbox-terms {
+    padding-top: 5px;
+    float: right;
+}
+
+.form-container .form-signup .button-signup {
+    float: right;
+    clear: both;
+    background-color: #8ecf6c;
+    border: 2px solid #8ecf6c;
+    border-radius: 3px;
+    color: #ffffff;
+}
+
+.form-container .form-signup .button-signup:hover {
+    background-color: #71a556;
+    border-color: #71a556;
+}
+
+
+
+
+
+

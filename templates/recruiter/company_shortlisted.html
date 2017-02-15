@@ -1,0 +1,180 @@
+{% extends "recruiter/dashboard.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/jobseeker/preferred_candidate.css' %}">
+{% endblock %}
+
+{% block js_block %}
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var checkcounter = 0;
+            $('.shortlisted').on('change',function(){
+                if($(this).is(':checked')){
+                    checkcounter+=1;
+                    $('#mail_to_shortlisted').removeClass('disabled');
+                }
+                else{
+                    checkcounter-=1;
+                    if(checkcounter == 0)
+                        $('#mail_to_shortlisted').addClass('disabled');
+                }
+            });
+
+            $('.mail').on('click',function(){
+                    var candidateList = [];
+                    $('.shortlisted').each(function()
+                    {
+                        if ($(this).is(':checked'))
+                        {
+                            var application_id=$(this).attr('id').split('_')[1];
+                            //alert(application_id);
+                            candidateList.push(application_id);
+                            alert(candidateList);
+                        }
+                    });
+
+                    var data1 = {'application_ids':candidateList};
+                    //console.log(data1);
+                    $.ajax({
+                            url: '/company/final_shortlisted_candidates/',
+                            type: 'POST',
+                            data: data1,
+                            success: function(data){
+                                var data=jsondata;
+                                if(typeof jsondata == 'object'){
+                                    if(jsondata['success'] == 'True'){
+                                        alert('successfully');
+
+                                    }
+
+                                    else{
+                                        alert('error occcurred');
+                                    }
+                                }
+
+                                else{
+                                    alert('not a jsonresponse');
+                                }
+                            }
+                        });
+
+            });    
+            
+
+            $('.modal-dialog').css({
+                'width': '800',
+                'margin-left': function () {
+                return ($(this).width() /4);
+            }
+            });
+
+        });
+            
+    </script>
+
+
+{% endblock %}
+
+{% block center_block %}
+    
+    {% ifequal applications|length 0 %}
+        {% include 'no_candidate.html' %}
+
+    {% else %}  
+
+        {% if True %}
+        <h4 style="color:orange;margin-top:20px;"> Company Shortlisted Candidates</h4>
+            <div class="row">
+                <div class="col-sm-9">
+                      
+                </div>
+
+        </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Mark</th>
+                        <th>Candidate Name</th>
+                        <th>Mobile Number</th>
+                        <th>Email</th>
+                    </tr>   
+                </thead> 
+
+                <div class="container">
+                    
+                {% for application in applications %}
+
+                    {% if application.mail_sent_to_shortlisted %}
+
+                    <div class="row">     
+                        <tr class='searchable'>
+
+                            <td >{{application.jobseeker.serial_number}}</td>
+                            <td ><a href="{{jobseeker.url}}">{{application.jobseeker.name}}</a></td>
+                            <td>{{application.jobseeker.contact_number}}</td>
+                            <td>{{application.jobseeker.email}}</td>
+
+
+                            <td><a href="" data-toggle="modal" data-target="#interview" type="button" class="btn btn-success">Take Interview</a></td>
+                
+                                                   
+
+                        </tr>    
+                    </div> 
+
+                    {% else %}
+                         <tr class='searchable'>
+
+                            <td >{{application.jobseeker.serial_number}}</td>
+                            <td ><a href="{{jobseeker.url}}">{{application.jobseeker.name}}</a></td>
+                            <td>{{application.jobseeker.contact_number}}</td>
+                            <td>{{application.jobseeker.email}}</td>
+
+
+                            <td><a href="" data-toggle="modal" data-target="#interview" type="button" class="btn btn-danger disabled">Take Interview</a></td>
+                
+                                                   
+
+                        </tr> 
+
+
+                    {% endif %}   
+                   
+                {% endfor %}  
+
+                </div>  
+
+
+            </table>   
+            {% endif %}  
+
+
+                    <!-- Interview modal here -->
+
+                    <div class="modal fade" id="interview">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" style="padding:10px;margin-top:10px;">Interview Detail</h4>
+                                     <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                                   
+                                </div>
+
+                                <div class="modal-body">
+                                    
+                                    {% include 'company/interview.html' with interview_form=interview_form job=job  %}
+                                    
+                             
+                                </div> 
+
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div>          
+              
+
+    {% endifequal %}        
+
+{% endblock %}

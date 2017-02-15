@@ -1,0 +1,130 @@
+.main-leaderboard-container .search-form {
+    background-color: #ffffff;
+    border:1px solid #ccc;
+    width: 700px;
+    height: 50px;
+    margin: 100px auto 35px auto;
+    border-radius: 4px;
+}
+
+.main-leaderboard-container .search-form .input-search {
+    width: 92%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 120%;
+    padding: 15px;
+    color:purple;
+}
+
+
+.main-leaderboard-container .search-form .button-search {
+    width: 7%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    float: right;
+}
+
+.main-leaderboard-container .search-form .button-search .image-search {
+    width: 22px;
+    height: 22px;
+}
+
+.nav .active{
+    font-weight: bolder;
+}
+
+
+
+.nav .navbar-default{
+    background-color: #012240;  
+}
+
+
+        
+.posted_job_wrapper{
+    width:100%;
+    border-radius: 5px;
+    margin:10px 0px 0px 0px;
+    height: 120px;
+    background-color: #fafafa;
+    box-shadow: 5px 0px 0px;
+    padding:10px;
+
+}
+
+
+.btn-view-more{
+    float:right;
+    color:white;
+    margin-top:10px;
+}
+
+
+.company_detail{
+    padding:6px;
+}
+
+
+
+a:hover{
+    color:green;
+}
+
+.job_title{
+    margin-left:80px;
+}
+
+.job_title:hover{
+    cursor:pointer;
+}
+
+.common_notification{
+    position:absolute;
+    color:#FFF;
+    font-size:12px;
+    font-weight:normal;
+    padding:1px 3px;
+    margin:-10px 0 0 -20px;
+    border-radius:80px;
+    -moz-border-radius:2px; 
+    -webkit-border-radius:2px;
+    z-index:1;
+}
+.final_shortlisted_notification{
+        background: purple;
+}
+
+ .preferred_notification {
+        background: orange;
+    }
+
+
+
+ .interested_notification {
+        background:red;
+        
+    }
+
+.shortlisted_notification {
+        background:green;
+        
+    }    
+
+
+
+/* .final_shortlisted_notification {
+        position:absolute;
+        background:purple;
+        color:#FFF;
+        font-size:12px;
+        font-weight:normal;
+        padding:1px 3px;
+        margin:-10px 0 0 -10px;
+        border-radius:2px;
+        -moz-border-radius:2px; 
+        -webkit-border-radius:2px;
+        z-index:1;
+    }*/

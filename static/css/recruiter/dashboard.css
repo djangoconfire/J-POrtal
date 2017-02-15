@@ -1,0 +1,57 @@
+
+        
+.posted_job_wrapper{
+    width:100%;
+    border-radius: 5px;
+    margin:10px 0px 0px 0px;
+    height: 120px;
+    background-color: #fafafa;
+    box-shadow: 5px 0px 0px;
+    padding:10px;
+
+}
+
+
+.btn-view-more{
+    float:right;
+    color:white;
+    margin-top:10px;
+}
+
+
+.company_detail{
+    padding:6px;
+}
+
+
+
+a:hover{
+    color:green;
+}
+
+
+.common_notification{
+    position:absolute;
+    color:#FFF;
+    font-size:12px;
+    font-weight:normal;
+    padding:1px 3px;
+    margin:-10px 0 0 -20px;
+    border-radius:80px;
+    -moz-border-radius:2px; 
+    -webkit-border-radius:2px;
+    z-index:1;
+}
+.final_shortlisted_notification{
+        background: purple;
+}
+ .preferred_notification {
+        background: orange;
+    }
+
+
+
+ .interested_notification {
+        background:red;
+        
+    }  

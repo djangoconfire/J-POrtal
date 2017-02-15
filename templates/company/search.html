@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load company_extras %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/company.css' %}">
+
+{% endblock %}
+   
+
+
+{% block center_block %}
+
+    <h3 style="margin-top:30px;text-decoration:underline;">
+    
+    {% ifequal count 1 %}
+        Search result for: <span style="color:red;">{{ query }}</span> ({{count}}company)</h3>
+    {% else %}  
+        Search result for: <span style="color:red;">{{ query }}</span> ({{count}}companies)</h3>
+    {% endifequal %}  
+
+
+    {% for company  in companies %}
+        {% for job in company.joblisting_set.all %}
+            <div class="company_searched">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h6 style="margin-left:80px;color:green;">{{job.job_title|title}}&nbsp;({{job.job_min_exp}} -    {{job.job_max_exp}} Years of Experience)</h6>
+                        <img src="{{job.company.company_logo.url}}" style="width:70px;height:30px;border-radius:40px;margin-top:-40px;">
+                        <small style="margin-left:20px;padding:30px;" >
+                        <a href="{{job.company.get_absolute_url}}">{{ job.company.company_name }}</a>|&nbsp;&nbsp;&nbsp;<a href="{% url 'jobseeker:preferred_candidate' job.slug %}">Preferred Candidates</a>|&nbsp;&nbsp;&nbsp;<i style="color:#992417;" class="fa fa-users" aria-hidden="true"></i>
+                        Interested Candidate |&nbsp;&nbsp;&nbsp; <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        Shortlisted Candidate |&nbsp;&nbsp;&nbsp; Current Status
+                        
+
+                        </small>
+                    </div>
+
+                  
+                </div> 
+
+            </div>     
+
+              
+        {% endfor %}
+    {% endfor %}  
+
+{% endblock %}

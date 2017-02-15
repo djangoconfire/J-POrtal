@@ -1,0 +1,68 @@
+.company_profile_form .company_profile_wrapper{
+	width:800px;
+	border-radius: 10px;
+	margin:40px auto;
+}
+
+.instance_label{
+    padding:20px;
+    font-size:15px;
+    text-decoration:underline;
+
+}
+
+
+
+.main-leaderboard-container .search-form {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    width: 300px;
+    height: 40px;
+    margin: 5px 5px 10px 800px;
+    border-radius: 4px;
+}
+
+.main-leaderboard-container .search-form .input-search {
+    width: 89%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 120%;
+    padding: 15px;
+}
+
+.main-leaderboard-container .search-form .button-search {
+    width: 7%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    float: right;
+}
+
+.main-leaderboard-container .search-form .button-search .image-search {
+    width: 22px;
+    height: 22px;
+}
+
+.company_searched{
+    width:100%;
+    border-radius: 5px;
+    margin:10px 0px 10px 0px;
+    height: 70px;
+    background-color: #fafafa;
+    box-shadow: 5px 0px 0px;
+    padding:10px;
+
+}
+
+a:hover{
+    color:green;
+}
+
+
+.wmd-panel{
+    margin-left:0px !important;
+    margin-right:0px !important;
+    
+}

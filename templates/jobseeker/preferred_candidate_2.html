@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/jobseeker/preferred_candidate.css' %}">
+{% endblock %}
+
+
+
+{% block js_block %}
+
+    <script type="text/javascript" src="{% static 'js/jobseeker/interested_jobseeker.js' %}"></script>
+
+
+
+    <script type="text/javascript">
+
+        function sendform_select(jobseeker_id){
+            alert('inside selection procedure.');
+            return function(){
+
+
+                alert("Inside function");
+                $.post('/company/candidate_selection',{id:jobseeker_id},function(response)
+                {
+                    alert("Inside response");
+                    var jsondata=response;
+                    if(typeof jsondata=='object'){
+                        if(jsondata['success']=='True'){
+                            $('#select-'+ jobseeker_id).css('background-color','green');
+                            
+
+                            alert("ajax done");
+
+                        }
+                        else if(jsondata['success'] == 'False')
+                        {
+                            alert("Not a jsonresponse");
+                            alert(jsondata['exception']);
+                        }  
+                    }             
+                        else
+                        {
+                            alert("response having no success attribute");
+                        }
+
+                });
+            }    
+            
+        }
+
+      
+
+
+        $(document).ready(function(){
+
+            alert('inside document');
+            
+          
+
+            var jobseeker_ids_list = JSON.parse("{{jobseeker_id_list|escapejs}}");
+
+            //alert(application_ids_list);
+
+              
+            for(id in jobseeker_ids_list)
+            {   
+                jobseeker_id = jobseeker_ids_list[id];
+                //alert(application_id);
+                $('#select-'+jobseeker_id).click(sendform_select(jobseeker_id));
+
+           }
+               
+            
+
+            });
+                //$('#reject-'+application_id).click(sendform_reject(application_id));
+
+
+            }
+
+
+        });
+
+    </script>
+
+{% endblock %}
+
+
+
+{% block center_block %}
+
+
+        {% ifequal jobseekers|length  0 %}
+
+           {% include 'no_candidate.html' %}
+
+        {% else %} 
+                
+            <h3 style="margin-top:30px;text-decoration:underline;color:orange;">List of Preferred Candidates</h3>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Profile Picture</th>
+                    <th>Serial</th>
+                    <th>Candidate Name</th>
+                    <th>Mobile Number</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                    
+       
+                </tr>
+               </thead>
+                {% for jobseeker in jobseekers %}
+                    <tr>
+                        <td><img src="{{jobseeker.profile_photo.url}}" style="width:40px;height:40px;border-radius:40px;margin-left:20px;"></td>
+                        <td>{{jobseeker.serial_number}}</td>
+                        <td>{{jobseeker.name|title}}</td>
+                        <td>{{jobseeker.contact_number}}</td>
+                        <td>{{jobseeker.email}}</td>
+
+                         <td>
+                                                        
+                            <select id="select_dropdown">
+                                    <option value="interested" title="interested">Interested</option>
+                                    <option value="not_interested" title="Not interested">Not Interested</option>
+                                    <option value="not_answered" title="not Answered">Not Answered</option>
+
+                            </select>
+                        </td>  
+                        
+                        
+                        
+
+                        
+
+                        <td><a href= "#" id="select-{{jobseeker.id}}" class = "btn btn-warning">Save</a></td>
+                            
+
+
+                        
+
+                    </tr>     
+
+
+
+                {% endfor %}
+            </table>
+        {% endifequal%}
+  
+{% endblock %}
+
+
+    

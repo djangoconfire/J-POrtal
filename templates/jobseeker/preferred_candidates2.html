@@ -1,0 +1,475 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/jobseeker/preferred_candidate.css' %}">
+{% endblock %}
+
+{% block js_block %}
+    
+    <script type="text/javascript">
+        
+        function create_new_form(serial_number,jobseeker_name,contact_number,email,jobseeker_slug,form_id,selection_id)
+        {
+
+            if(selection_id == 'interested')
+            {
+                alert('interested candidate');
+                var interested_content="<div style='text-align:center;' class='well'><strong style='color:green;'>" + jobseeker_name + "</strong>&nbsp;&nbsp;&nbsp; interested </div><hr><a href='' type='button' class='btn btn-warning'>Send Job Detail</a>"
+
+                $("#dropdown_onchange_form .modal-body").html(interested_content);
+                //     //window.location.href='/django/';
+
+                //     var tbody = $("#example").find('tbody');
+                //     alert(tbody);
+                // // next, iterate through the JSON array
+                //     $.each(tbody, function() {
+                // // create the row
+                //         var row = $('<tr>');
+                //         alert(row);
+                //         alert('ritu');
+                //     // iterate through each dog breed's attributes and create a column for each key, value pair
+                //         $.each(this, function(serial_number, jobseeker_name) {
+                //         // create the column
+                //          var col = $('<td>');
+                //         // add text to the column
+                //         col.text(serial_number+":"+jobseeker_name);
+                //     // append the column to the row
+                //     row.append(col);
+                // });
+                // // append the row to the table body
+                //     tbody.append(row);
+                // });
+            }
+
+            else if(selection_id == 'not_interested')
+            {
+                alert('Not interested candidate');
+
+                var not_interested_content="<div style='text-align:center;' class='well'><strong style='color:green;'>" + jobseeker_name + "</strong>&nbsp;not interested</div>";
+
+                $("#dropdown_onchange_form .modal-body").html(not_interested_content);
+
+            }
+
+            else
+            {
+                alert('not_ansswered');
+               
+                var not_answered_content="<div style='text-align:center;' class='well'><i class='fa fa-phone'></i>&nbsp; Unable to make a contact with &nbsp;&nbsp;&nbsp; <strong style='color:green;'>" + jobseeker_name + "</strong><a href='' style='float:right;line-height:10px;' type='button' class='btn btn-warning'><i class='fa fa-mail-forward'></i></a></div><hr>";
+                alert(not_answered_content);
+
+                $("#dropdown_onchange_form .modal-body").html(not_answered_content);
+            }    
+        }
+
+
+        function manageselection(form_id,job_slug)
+        {
+
+            return function(event)
+            {
+                event.preventDefault();
+                var form_data=$(form_id).serializeArray();
+                alert(form_data);
+                //alert(jobseeker_id);
+                form_data=JSON.stringify(form_data);
+                alert(form_data);
+
+                $.post('/jobseeker/selecting_preferred_candidate/',{'form_data':form_data,'job_slug':job_slug},function(response)
+                {
+
+                    var jsondata=response;
+                    if(typeof jsondata == 'object')
+                    {
+
+                        if(jsondata['success'] == 'True')
+                        {
+                            var jobseeker_slug=jsondata['jobseeker_slug'];
+                            var jobseeker_name=jsondata['jobseeker_name'];
+                            var contact_number=jsondata['contact_number'];
+                            var email=jsondata['email'];
+                            var serial_number=jsondata['serial_number'];
+                            var form_id=jsondata['form_id'];
+                            var selection_id=jsondata['selection_id'];
+                            //var relavant_skill=jsondata['relavant_skill'];
+
+                            //alert(relavant_skill);
+
+                            create_new_form(serial_number,jobseeker_name,contact_number,email,jobseeker_slug,form_id,selection_id);
+                        }
+                        else if(jsondata['success'] == 'False')
+                        {
+                            if(jsondata['message']){
+                                alert(jsondata['message']);
+                            }
+                            else
+                            {
+                                alert('form not saved into database');
+                            }
+                        }
+                        else
+                        {
+                            alert('jsonresponse having no success attribute');
+                        }
+
+                    }
+                    else
+                    {
+                        alert('not a jsonresponse');
+                    }
+                });
+
+            }
+        }
+
+    
+
+
+        $(function()
+        {
+            var form_id=$('#preferred_candidate');
+
+            var selection_id=$('#id_selection');
+
+            var jobseeker_ids_list = JSON.parse("{{jobseeker_id_list|escapejs}}");
+
+            var job_slug = "{{job.slug}}";
+
+            //alert(application_ids_list);
+
+            // $('#selection_id').on('change',function() 
+            // {
+            //     $('#selection_id').not($(this)).removeAttr('selected');
+            // }
+
+            $(form_id).unbind("submit").submit(manageselection(form_id,job_slug));
+            
+
+        });
+
+      
+        $(document).ready(function () {
+
+            $('input.filter').on('keyup', function() {
+                var rex = new RegExp($(this).val(), 'i');
+                $('.searchable ').hide();
+                $('.searchable').filter(function() {
+                    return rex.test($(this).text());
+                    }).show();
+                });
+            });
+               
+    </script>
+
+{% endblock %}
+
+
+{% block center_block %}
+    <div class="container-fluid preferred_job_seekers">
+    
+        {% ifequal count 0 %}
+
+            {% include 'no_candidate.html' %}
+
+        {% else %}   
+            <h4 style="color:green;margin-top:20px;text-decoration:underline;">List of Preferred Candidates</h4>
+
+             <div class="col-md-3 input-group pull-right form-group" >
+                <span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                <input type="text" class="filter form-control" placeholder="What you looking for?">
+            </div>
+            <table class="table" id="example">
+                <thead>
+                    <tr>
+                      <th>Serial Number</th>
+                      <th><i class="fa fa-user"><i>&nbsp;Candidate Name</th>
+                      <th><i class="fa fa-phone"></i>&nbsp;Mobile Number</th>
+                      <th><i class="fa fa-envelope"><i>&nbsp;Email</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                     
+                    </tr>
+                </thead>  
+                <tbody>
+                    <form action="#" class="form-control" id="preferred_candidate" method="get">
+                        {% csrf_token %}
+                        <div class="container">
+                            {% for form in formset.forms %}
+                                {{ formset.management_form }}
+                                {{form.id}}
+                                <div class="row">     
+                                    <tr class="searchable"> 
+                                        <div class="col-sm-3"> 
+
+                                            {% for field in form %}
+                                                {% if  field.name == 'profile_photo' %}
+                                                    <td><img src="{{form.instance.profile_photo.url}}" style="width:60px;height:50px;border-radius:50px;"></td>
+
+                                                   
+
+
+                                                {% elif field.name == 'name' %}
+
+                                                    <td><a href="{% url 'jobseeker:profile' form.instance.slug %}">{{form.instance.name}}</a></td> 
+
+                                                {% elif field.name == 'id' %}
+                                                    <td>{{field.hidden}}</td>      
+
+                                                {% elif field.name == 'action_by_recruiter' %}
+                                                    <td>
+                                                        {{ field }}
+                                                       <!--   <select id="id_selection" name="selection">
+                                                            {% for choice in form.instance.jobapplications_set.all %}
+                                                                <option value="{{choice.action_by_recruiter}}">
+                                                                        {{choice.action_by_recruiter}}
+                                                                </option>
+                                             
+                                                            {% endfor %}    
+                                                        </select> -->
+                                                        
+                                                       <!--  <select id="id_selection" name="selection" >
+                                                                <option value="" selected>Select</option>
+                                                                <option value="interested" title="interested">Interested</option>
+                                                                <option value="not_interested" title="Not interested">Not Interested</option>
+                                                                <option value="not_answered" title="not Answered">Not Answered</option>
+
+                                                        </select> -->
+                                                    </td>    
+
+                                            
+                                                    {% comment %}    
+                                                    {% elif field.name == 'current_designation' %}
+                                                        <td><label>{{form.instance.current_designation.position}}</label></td> 
+                                                    {% elif field.name == 'skills' %}
+                                                        <td><label>
+                                                            {% for skill in form.instance.skills.all %}
+                                                                {{skill.name}}
+                                                            {% endfor %}
+                                                        </label></td>  
+
+                                                    
+                                                    {% endcomment %}
+                                                        
+                                                {% else %}
+                                                    <td><label>{{field.value}}</label></td>
+                                                {% endif %}
+                                            
+                                            {% endfor %}
+
+                                            {% if form.instance.jobapplications_set.all %}
+
+                                            {% for application in form.instance.jobapplications_set.all %}
+
+
+                                            {% if application.action_by_recruiter == "interested" %}
+
+                                              <td><button type="button" class="btn btn-success disabled">Save</button></td>
+
+                                            {% elif application.action_by_recruiter == "not_interested" %}
+
+                                              <td><button type="button" class="btn btn-danger disabled">Save</button></td>
+
+
+                                        
+
+                                            {% else %}
+                                            
+                                            <td><button type="submit" class="btn btn-warning ">Save</button></td>
+
+                                            {% endif %}    
+
+
+
+                                            {% endfor %} 
+
+                                            {% else %}
+
+                                             <td><button type="submit" data-toggle="modal" data-target="#dropdown_onchange_form" class="btn btn-primary ">Save</button></td>
+
+                                            {% endif %}
+
+
+
+                                            {% comment %}
+                                            <td><a href="" class="btn btn-default" data-toggle="modal" data-target="#edit_preferred_candidate">Edit</a></td>
+
+                                            
+                                            {% if form.instance.mail_sent_to_preferred %} 
+                                                <td><a href="#" class="btn btn-success disabled ">Send Mail</a></td>
+                                            {% else %}
+                                                <td><a href="{% url 'jobseeker:send_mail' form.instance.slug job.slug %}"data-toggle="modal" data-target="#mail_sent" class="btn btn-success">Send Mail</a></td> 
+
+                                            {% endif %}   
+
+                                            {% endcomment %}
+                                                
+                                        </div> 
+                                    </tr>   
+                                </div>  
+                            {% endfor %}    
+                        </div> 
+                    </form> 
+            </tbody>
+
+        {% comment %}
+
+            <div class="container">
+                <div class="row">      
+                    <div class="col-sm-3"> 
+                
+                        {% for jobseeker in jobseekers %}
+
+                            <tr>
+                                <td>{{jobseeker.serial_number}}</td>
+                                <td>{{jobseeker.name}}</td>
+                                <td>{{jobseeker.contact_number}}</td>
+                                <td>{{jobseeker.email}}</td>
+                                                   
+                                <td>
+                                    <select id="id_selection">
+                                    {% for choice in jobseeker.jobapplications_set.all %}
+                                        <option value="{{choice.action_by_recruiter}}">{{choice.action_by_recruiter}}</option>
+                                        
+                                    {% endfor %}    
+                                </select>
+                                </td>        
+
+                                <td>
+                                    <button type="submit" class ="btn btn-warning">Save</button>
+
+                                </td>
+
+                                
+
+                                   
+                                   <!--  <select id="id_selection" name="selection" >
+                                            <option value="" selected>Select</option>
+                                            <option value="interested" title="interested">Interested</option>
+                                            <option value="not_interested" title="Not interested">Not Interested</option>
+                                            <option value="not_answered" title="not Answered">Not Answered</option>
+
+                                    </select> -->
+                                 
+
+                               
+
+                            </tr>   
+                        {% endfor %}    
+                    </div>
+                </div> 
+            </div> 
+            
+        {% endcomment %}
+
+        </table>  
+
+    {% endifequal%} 
+       
+   <!--     <!-- sendiing mail to not answered candidate -->
+    <div class="modal" id="not_answered_form">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Send Job Detail</h4>
+                     <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                   
+                </div>
+
+                <div class="modal-body"></div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div> -->
+
+
+    <!-- not interested form -->
+     
+    <div class="modal" id="dropdown_onchange_form">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Message</h4>
+                     <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                   
+                </div>
+
+                <div class="modal-body"></div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+        
+    <!-- Successfully send mail dialog  -->
+    <div class="modal" id="mail_sent">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Send Mail</h4>
+                     <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                   
+                </div>
+
+                <div class="modal-body">
+                    <strong> Succcessfully Mail Sent to <span style="color:green;text-decoration:underline;>"{{jobseeker_obj.email}}</span></strong>
+                    
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+
+    <!-- Edit Preferred Candidate -->
+
+    <div class="modal" id="edit_preferred_candidate">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit</h4>
+                     <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                   
+                </div>
+
+                <div class="modal-body">
+                    {% include 'jobseeker/edit_interested_candidate.html' with form=form %}
+             
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+
+
+
+    <!-- Pagination starts from here... -->
+
+    <div class="pagination" style="float:right;">
+        <span class="step-links">
+          {% if jobseekers.has_previous %}
+            <a href="?page={{jobseekers.previous_page_number}}">Previous</a>
+          {% endif %}  
+
+          <span class="current">
+            Page{{jobseekers.number}} of {{jobseekers.paginator.num_pages}}.
+          </span>
+
+          {% if jobseekers.has_next %}
+            <a href="?page={{jobseekers.next_page_number}}">Next</a>
+
+          {% endif %}
+        
+        </span>
+    </div> 
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% load staticfiles %}
+
+{% block head %}
+
+	<style type="text/css">
+
+		  table {
+		  border-collapse: separate;
+		  border-spacing: 0;
+		}
+
+		th,
+		td {
+		  padding: 10px 15px;
+		}
+
+		thead {
+		  background: #395870;
+		  color: #fff;
+		}
+
+
+		th {
+		  font-weight: bold;
+		}
+
+		tbody tr:nth-child(even) {
+		  background: #f0f0f2;
+		}
+
+		td {
+		  border-bottom: 1px solid #cecfd5;
+		  border-right: 1px solid #cecfd5;
+		}
+
+
+		td:first-child {
+		  border-left: 1px solid #cecfd5;
+		}
+	</style>
+
+{% endblock %}
+
+<div class="shortlisted_form_wrapper">
+
+	<table class="table">
+		
+		<thead>
+			<tr>
+				<th>Date</th><th>Id</th><th>Cnadidate Name</th><th>Work Exp.</th><th>UG_COurse</th><th>UG_Institute_Name</th><th>PG_Course</th><th>PG_Institute_Name</th><th>Current CTC(Lacs)</th><th>Current Employer</th>
+			</tr>
+		</thead>	
+		
+		{% for application in applications %}
+			{% if application.mail_to_company %} 
+				<p style="color:red;text-align:center;font-size:20px;">No Shortlisted Candidate !!!!</p>
+			{% endif %}
+			{% if not application.mail_to_company %} 
+				<tr>
+					<td>{% now "F jS o" %}</td>
+					<td>{{application.jobseeker.serial_number}}</td>
+					<td>{{application.jobseeker.name}}</td>
+					<td>{{application.jobseeker.work_exp}}</td>
+					<td>{{application.jobseeker.ug_course}}</td>
+					<td>{{application.jobseeker.ug_institute_name}}</td>
+					<td>{{application.jobseeker.pg_course}}</td>
+					<td>{{application.jobseeker.pg_institute_name}}</td>
+					<td>{{application.jobseeker.ctc}}</td>
+					<td>{{application.jobseeker.current_employer}}</td>
+					
+				</tr>
+
+			{% endif %}	
+
+
+
+		{% endfor %}
+	</table>	
+
+
+
+</div>

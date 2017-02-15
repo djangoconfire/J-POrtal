@@ -1,0 +1,469 @@
+{% extends "recruiter/dashboard.html" %}
+
+{% load staticfiles %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/jobseeker/preferred_candidate.css' %}">
+   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
+{% endblock %}
+
+{% block js_block %}
+    
+    <script type="text/javascript">
+        function create_new_form(serial_number,jobseeker_name,contact_number,email,jobseeker_slug,form_id,selection_id)
+        {
+
+            if(selection_id == 'interested')
+            {
+                alert('interested candidate');
+                var interested_content="<div style='text-align:center;' class='well'><strong style='color:green;'>" + jobseeker_name + "</strong>&nbsp;&nbsp;&nbsp; interested </div><hr><a href='' type='button' class='btn btn-warning'>Send Job Detail</a>"
+
+                $("#dropdown_onchange_form .modal-body").html(interested_content);
+                //     //window.location.href='/django/';
+
+                //     var tbody = $("#example").find('tbody');
+                //     alert(tbody);
+                // // next, iterate through the JSON array
+                //     $.each(tbody, function() {
+                // // create the row
+                //         var row = $('<tr>');
+                //         alert(row);
+                //         alert('ritu');
+                //     // iterate through each dog breed's attributes and create a column for each key, value pair
+                //         $.each(this, function(serial_number, jobseeker_name) {
+                //         // create the column
+                //          var col = $('<td>');
+                //         // add text to the column
+                //         col.text(serial_number+":"+jobseeker_name);
+                //     // append the column to the row
+                //     row.append(col);
+                // });
+                // // append the row to the table body
+                //     tbody.append(row);
+                // });
+            }
+
+            else if(selection_id == 'not_interested')
+            {
+                alert('Not interested candidate');
+
+                var not_interested_content="<div style='text-align:center;' class='well'><strong style='color:green;'>" + jobseeker_name + "</strong>&nbsp;not interested</div>";
+
+                $("#dropdown_onchange_form .modal-body").html(not_interested_content);
+
+            }
+
+            else
+            {
+                alert('not_ansswered');
+               
+                var not_answered_content="<div style='text-align:center;' class='well'><i class='fa fa-phone'></i>&nbsp; Unable to make a contact with &nbsp;&nbsp;&nbsp; <strong style='color:green;'>" + jobseeker_name + "</strong><a href='' style='float:right;line-height:10px;' type='button' class='btn btn-warning'><i class='fa fa-mail-forward'></i></a></div><hr>";
+                alert(not_answered_content);
+
+                $("#dropdown_onchange_form .modal-body").html(not_answered_content);
+            }    
+        }
+
+
+       /* function manageselection(form_id,job_slug)
+        {
+
+            return function(event)
+            {
+                event.preventDefault();
+                var form_data=$(form_id).serializeArray();
+                alert(form_data);
+                //alert(jobseeker_id);
+                form_data=JSON.stringify(form_data);
+                alert(form_data);
+
+                $.post('/jobseeker/selecting_preferred_candidate/',{'form_data':form_data,'job_slug':job_slug},function(response)
+                {
+
+                    var jsondata=response;
+                    if(typeof jsondata == 'object')
+                    {
+
+                        if(jsondata['success'] == 'True')
+                        {
+                            var jobseeker_slug=jsondata['jobseeker_slug'];
+                            var jobseeker_name=jsondata['jobseeker_name'];
+                            var contact_number=jsondata['contact_number'];
+                            var email=jsondata['email'];
+                            var serial_number=jsondata['serial_number'];
+                            var form_id=jsondata['form_id'];
+                            var selection_id=jsondata['selection_id'];
+                            //var relavant_skill=jsondata['relavant_skill'];
+
+                            //alert(relavant_skill);
+
+                            create_new_form(serial_number,jobseeker_name,contact_number,email,jobseeker_slug,form_id,selection_id);
+                        }
+                        else if(jsondata['success'] == 'False')
+                        {
+                            if(jsondata['message']){
+                                alert(jsondata['message']);
+                            }
+                            else
+                            {
+                                alert('form not saved into database');
+                            }
+                        }
+                        else
+                        {
+                            alert('jsonresponse having no success attribute');
+                        }
+
+                    }
+                    else
+                    {
+                        alert('not a jsonresponse');
+                    }
+                });
+
+            }
+        }*/
+
+    
+
+
+        /*$(function()
+        {
+            var form_id=$('#preferred_candidate');
+
+            var selection_id=$('#id_selection');
+
+            //var jobseeker_ids_list = JSON.parse("{{jobseeker_id_list|escapejs}}");
+
+            var job_slug = "{{job.slug}}";
+
+            //alert(application_ids_list);
+
+            // $('#selection_id').on('change',function() 
+            // {
+            //     $('#selection_id').not($(this)).removeAttr('selected');
+            // }
+
+            $(form_id).unbind("submit").submit(manageselection(form_id,job_slug));
+            
+
+        });*/
+
+        function sendmail(){
+            
+            var url = window.location.pathname;
+            var jobSlug = url.split('/')[2];
+            $('.btn_send_mail').click(function(){
+                alert('btn clicked');
+
+                var jobSeekerId = $(this).attr('id').split('_')[3];
+                alert(jobSeekerId);
+                var data={'jobSlug':jobSlug,'jobSeekerId':jobSeekerId}
+
+                $.ajax({
+                    url: '/jobseeker/send_job_detail/',
+                    type: 'POST',
+                    data: data,
+                    dataType : 'json',
+                    success : function(data){
+                        console.log(data);
+                    }
+
+                });
+
+
+                
+            });
+        }
+
+      
+        $(document).ready(function () {
+            $('input.filter').on('keyup', function() {
+                var rex = new RegExp($(this).val(), 'i');
+                $('.searchable ').hide();
+                $('.searchable').filter(function() {
+                    return rex.test($(this).text());
+                    }).show();
+                });
+            
+            var previous;
+
+            $(".id_selection").on('focus', function () {
+                previous = this.value;
+            });
+            var url = window.location.pathname;
+            var jobSlug = url.split('/')[2];
+            $('.id_selection').on('change',function(){
+                var action_by_recruiter = $(this).val();
+                var jobSeekerId = $(this).attr('id').split('_')[1];
+                var data = {'jobSlug':jobSlug,'action_by_recruiter':action_by_recruiter,'jobSeekerId':jobSeekerId};
+                if(action_by_recruiter.length>0){
+                    $.ajax({
+                      type: "POST",
+                      url: '/jobseeker/selecting_preferred_candidate/',
+                      data: data,
+                      dataType: 'json',
+                      success:function(data){
+                        console.log(data);
+                      },
+                      error:function(err){
+                        $('#select_'+jobSeekerId).val(previous);
+                        console.log("errrr")
+                      }
+                    }); 
+                }
+            });
+        }); 
+
+        sendmail();   
+               
+    </script>
+
+{% endblock %}
+
+
+{% block center_block %}
+    <div class="container-fluid preferred_job_seekers">
+    
+        {% ifequal count 0 %}
+
+            {% include 'no_candidate.html' %}
+
+        {% else %}   
+            <h4 style="color:green;margin-top:20px;text-decoration:underline;">List of Preferred Candidates</h4>
+
+             <div class="col-md-3 input-group pull-right form-group" >
+                <span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                <input type="text" class="filter form-control" placeholder="What you looking for?">
+            </div>
+            <table class="table table-hover table-striped sortable" id="example" data-toggle="table" data-sort-name="skillCount">
+                <thead>
+                    <tr>
+                      <th>Serial Number</th>
+                      <th data-sortable="true" data-field="name"><i class="fa fa-user"><i>&nbsp;Candidate Name</th>
+                      <th><i class="fa fa-phone"></i>&nbsp;Mobile Number</th>
+                      <th><i class="fa fa-envelope"><i>&nbsp;Email</th>
+                      <th data-field="skillCount"  data-sortable="true"  >Skill Match</th>
+                      <th>Preference</th>
+                      <th>Mail Sent</th>
+                      <th>Send Mail</th>
+                    </tr>
+                </thead> 
+
+                
+
+
+
+            <div class="container">
+                <div class="row">      
+                    <div class="col-sm-3"> 
+                
+                        {% for jobseeker in jobseekers %}
+
+                            <tr class='searchable'>
+                                <td >{{jobseeker.serial_number}}</td>
+                                <td ><a href="{{jobseeker.url}}">{{jobseeker.name}}</a></td>
+                                <td>{{jobseeker.contact_number}}</td>
+                                <td>{{jobseeker.email}}</td>
+                                <td data-skillCount="{{ jobseeker.matchMap.count }}">{{ jobseeker.matchMap.count }} ({{jobseeker.matchMap.matchList }})</td>
+                                <td>
+                                    <select class="id_selection" id="select_{{jobseeker.id}}">
+                                        
+                                            <option value="" 
+                                                {% if jobseeker.action_by_recruiter == None %}
+                                                    selected 
+                                                {% endif %} >Select your option
+
+                                            </option>
+                                            
+                                            <option value="interested" title="interested" 
+                                                {% if jobseeker.action_by_recruiter == 'interested' %} selected 
+                                            {% endif %}>
+                                                Interested
+
+                                            </option>
+                                            <option value="not_interested" title="Not interested" 
+                                                {% if jobseeker.action_by_recruiter == 'not_interested' %} selected 
+                                                {% endif %}>Not Interested
+                                            </option>
+                                            
+                                            <option value="not_answered" title="Not Answered" 
+                                                {% if jobseeker.action_by_recruiter == "not_answered" %}selected 
+                                                {% endif %}>
+                                                Not Answered
+                                            </option> 
+                                      
+                                            
+                                    </select>
+                                </td>     
+
+                                {% if jobseeker.action_by_recruiter == 'interested'  %} 
+                                    {% if jobseeker.mail_sent %}
+                                        <td><i style="color:green;" class="fa fa-check-square-o"></i></td>
+
+                                    {% else %}
+                                        <td><i class="fa fa-square-o"></i></td>
+                                    {% endif %}  
+                                                                    
+                                    <td><button type="button" id="send_mail_btn_{{jobseeker.id}}" class="btn btn-success btn_send_mail" {% if jobseeker.mail_sent %} disabled {% endif %} ><i class="fa fa-mail-forward"></i></button></td>
+
+                                    <!-- <td>{{jobseeker.mail_sent_at}}</td> -->
+                                {% endif %}       
+
+
+                                {% if jobseeker.action_by_recruiter == 'not_answered'  %} 
+                                    {% if jobseeker.mail_sent %}
+                                        <td><i style="color:green;" class="fa fa-check-square-o"></i></i></td>
+
+                                    {% else %}
+                                        <td><i  class="fa fa-square-o"></i></i></td>
+                                    {% endif %}  
+                                                                    
+                                    <td><button type="button" id="send_mail_btn_{{jobseeker.id}}" class="btn btn-warning btn_send_mail" {% if jobseeker.mail_sent %} disabled {% endif %} ><i class="fa fa-mail-forward"></i></button></td>
+                                {% endif %}
+
+
+                                {% if jobseeker.action_by_recruiter == 'not_interested' %} 
+                                    <td></td>
+                                    <td></td>
+                                {% endif %}
+                                <!-- <td>
+                                    <button type="submit" class ="btn btn-warning" id="save_{{jobseeker.id}}">Save</button>
+
+                                </td>
+
+                                 -->
+
+                                   
+                                   <!--  <select id="id_selection" name="selection" >
+                                            <option value="" selected>Select</option>
+                                            <option value="interested" title="interested">Interested</option>
+                                            <option value="not_interested" title="Not interested">Not Interested</option>
+                                            <option value="not_answered" title="not Answered">Not Answered</option>
+
+                                    </select> -->
+                                 
+
+                               
+
+                            </tr>   
+                        {% endfor %}    
+                    </div>
+                </div> 
+            </div> 
+
+        </table> 
+
+
+         <div class="pagination" style="float:right;">
+            <span class="step-links">
+                  {% if jobseekers.has_previous %}
+                    <a href="?page={{jobseekers.previous_page_number}}">Previous</a>
+                  {% endif %}  
+
+                  <span class="current">
+                    Page {{jobseekers.number}} of {{jobseekers.paginator.num_pages}}.
+                  </span>
+
+                  {% if jobseekers.has_next %}
+                    <a href="?page={{jobseekers.next_page_number}}">Next</a>
+
+                  {% endif %}
+            
+            </span>
+    </div> 
+
+    {% endifequal %} 
+       
+   <!--     <!-- sendiing mail to not answered candidate -->
+    <div class="modal" id="not_answered_form">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Send Job Detail</h4>
+                     <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                   
+                </div>
+
+                <div class="modal-body"></div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div> 
+
+
+    <!-- not interested form -->
+     
+    <div class="modal" id="dropdown_onchange_form">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Message</h4>
+                     <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                   
+                </div>
+
+                <div class="modal-body"></div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+        
+    <!-- Successfully send mail dialog  -->
+    <div class="modal" id="mail_sent">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Send Mail</h4>
+                     <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                   
+                </div>
+
+                <div class="modal-body">
+                    <strong> Succcessfully Mail Sent to <span style="color:green;text-decoration:underline;>"{{jobseeker_obj.email}}</span></strong>
+                    
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+
+    <!-- Edit Preferred Candidate -->
+
+    <div class="modal" id="edit_preferred_candidate">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit</h4>
+                     <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                   
+                </div>
+
+                <div class="modal-body">
+                    {% include 'jobseeker/edit_interested_candidate.html' with form=form %}
+             
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+
+
+
+    <!-- Pagination starts from here... -->
+
+   
+</div>
+{% endblock %}

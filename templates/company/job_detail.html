@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+
+Job Description|{{job.company.company_name}}
+
+{% endblock title %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+    <script   src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script type='text/javascript' src = "{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript"  src="{% static 'jquery-autosuggest/js/jquery.autoSuggest.minified.js' %}"></script>
+    <link href="{% static 'jquery-autosuggest/css/autoSuggest.css' %}" type="text/css" media="all" rel="stylesheet" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+     "{{form.media}}"
+
+
+{% endblock %}
+
+{% block js_block %}
+    <script>
+        $(document).ready(function(){
+            $('.image-responsive').each(function(){
+                $(this).addClass('img-responsive');
+            });
+        });
+
+    </script>
+
+{% endblock %}
+
+
+{% block center_block %}
+
+   <div class="container job_detail_container">
+        <div class="container job_detail_wrapper">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h4 style="margin-top:40px;color:green;text-decoration:underline;">{{job.job_title}}</h4>
+                    <strong style="margin-left:20px;  "><a href="{{job.company.get_absolute_url}}">{{job.company.company_name}}</a></strong><br/>
+                    
+                    <small style="color:grey;margin-left:40px;">
+                            <span><i class="fa fa-briefcase"></i>{{job.job_min_exp}} -{{job.job_max_exp}}(Years)</span>
+
+                            <span style="margin-left:60px;"><i class="fa fa-map-marker"></i>{{job.job_location.city_name}}</span>
+
+                    </small>
+                     
+                    
+                    
+                </div>
+
+                <div class="col-sm-6">
+                    <img src="{{job.company.company_logo.url}}" style="width:200px;height:40px;margin-top:80px;">
+                </div>
+
+                <div class="col-sm-2">
+                  <a href="" type="button" data-toggle="modal" data-target="#edit_job" class="btn btn-warning btn-edit-job">Edit Job</a>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                   <strong style="text-decoration:underline;">Key Skills:</strong>
+                     {% for skill in job.job_skills.all %}
+                         <ul>
+                           <li>{{skill.name}}</li>
+
+                         </ul> 
+                     {% endfor %}  
+
+                  <strong class="image-responsive" style="text-decoration:underline;height:auto;">Description</strong>
+                  <p>{{job.get_content_as_markdown|safe}}</p>   
+                    
+                    
+                </div>
+
+            </div>
+
+            <div class="row">
+               <div class="col-sm-12">
+
+                  <div class="posted_by">
+                     <span style="margin-left:30px;line-height:40px;"><i class="fa fa-inr"></i>&nbsp;&nbsp;&nbsp;{{job.job_min_ctc}} - {{job.job_max_ctc}} lakh P.A</span>
+                     <span style="float:right;line-height:40px;">Posted by &nbsp;&nbsp;<span style="color:green;">{{user.username}}</span></span>
+                 </div>
+
+            </div>
+
+        </div>
+
+
+                  <!-- Update Job-->
+        <div class="modal fade" id="edit_job">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="padding:10px;margin-top:10px;">Edit Job</h4>
+                         <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                       
+                    </div>
+
+                    <div class="modal-body">
+                        
+                        {% include "company/edit_job_form.html" with  form=form job=job %}
+                        
+                 
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+

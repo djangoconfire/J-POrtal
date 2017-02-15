@@ -1,0 +1,192 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+  
+  <link rel="sylesheet" href="{% static 'css/company/shortlisted_candidate.css' %}">
+
+{% endblock %}
+
+
+{% block js_block %}
+    
+    <script type="text/javascript" src="{% static 'js/jobseeker/interested_jobseeker.js' %}"></script>
+
+    <script>
+        $(function(){
+                 
+            $('.modal-dialog').css({
+             width: 'auto',
+            'margin-left': function () {
+             return -($(this).width() / 8);
+            }
+            });
+        });
+    </script>
+
+   
+
+{% endblock %}
+
+
+
+{% block center_block %}
+
+    {% ifequal applications|length 0 %}
+        {% include 'no_candidate.html' %}
+
+    {% else %} 
+
+    <!-- <div class="row"> -->
+        
+
+         <div class="col-md-3 input-group pull-right form-group" >
+                <span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                <input type="text" class="filter form-control" placeholder="What you looking for?">
+            </div>
+
+         <div class="col-sm-12">
+            <h3 style="margin-top:30px;text-decoration:underline;color:orange;">List of Shortlisted Candidates</h3>
+            <a href="" class="btn btn-warning" style="float:right;margin-top:-20px;" data-toggle="modal" data-target="#mail_to_company" type="button">Send Mail to {{company.company_name}}</a>
+        </div>     
+
+        <div class="row"> 
+            <div class="col-sm-12">
+                <table class="table" style="margin-top:15px;">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Candidate Name</th>
+                            <th>Mobile Number</th>
+                            <th>Email</th>
+                            <th>Resume</th>
+                            <th></th>
+                    
+                        </tr>
+                    </thead>
+
+                    {% for application in applications %}  
+
+                        {% if application.mail_to_company %} 
+                            
+                            <tr class="searchable">
+                                <!-- <td><img src="{{application.jobseeker.profile_photo.url}}" style="width:40px;height:40px;border-radius:40px;margin-left:20px;"></td> -->
+                                <td>{{application.jobseeker.serial_number}}</td>
+                                <td>{{application.jobseeker.name|title}}</td>
+                                <td>{{application.jobseeker.contact_number}}</td>
+                                <td>{{application.jobseeker.email}}</td>
+                                
+                                
+                                {% if application.jobseeker.resume %}
+                                    <td><a href="{{application.jobseeker.get_resume_url}}">Yes&nbsp;<i style="color:orange;" class="fa fa-download"></i></a></td>
+                                    <td><a href="{% url 'jobseeker:profile' application.jobseeker.slug  %}"class="btn btn-default" class="btn btn-default">View Profile</a></td>
+                                
+                                {% else %}
+
+                                     <td>No</td>
+                                     <td><a href="{% url 'jobseeker:profile' application.jobseeker.slug  %}" class="btn btn-default">View Profile</a></td>
+                                     
+                                {% endif %}
+
+                                <td><button type="button" class="btn btn-success disabled">Mail Already Sent</button>
+                            </tr>
+
+                        {% else %}
+
+                            <tr>
+                                <!-- <td><img src="{{application.jobseeker.profile_photo.url}}" style="width:40px;height:40px;border-radius:40px;margin-left:20px;"></td> -->
+                                <td>{{application.jobseeker.serial_number}}</td>
+                                <td>{{application.jobseeker.name|title}}</td>
+                                <td>{{application.jobseeker.contact_number}}</td>
+                                <td>{{application.jobseeker.email}}</td>
+                                
+                                
+                                {% if application.jobseeker.resume %}
+                                    <td><a href="{{application.jobseeker.get_resume_url}}">Yes&nbsp;<i style="color:orange;" class="fa fa-download"></i></a></td>
+                                    <td><a href="{% url 'jobseeker:profile' application.jobseeker.slug  %}"class="btn btn-default" class="btn btn-default">View Profile</a></td>
+                                
+                                {% else %}
+
+                                     <td>No</td>
+                                     <td><a href="{% url 'jobseeker:profile' application.jobseeker.slug  %}" class="btn btn-default">View Profile</a></td>
+                                     
+                                {% endif %}
+
+                       
+                            </tr>
+
+                        {% endif %} 
+
+                    {% endfor %}    
+             </table>  
+        </div> 
+    </div>        
+
+{% endifequal %} 
+
+
+
+<!--Mail_to_company-->
+    {% for application in applications %}
+        <div class="modal fade" id="mail_to_company">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                     <div class="modal-header">
+                        <h4 class="modal-title" style="margin-left:50px;margin-top:30px;color:orange;font-weight:bold;">List of Shortlisted Students</h4>
+
+                        {% if application.mail_to_company %}
+
+                        <a href="{% url 'company:mail_to_company' company.slug job.slug %}" type="submit" style="float:right;margin-top:-20px;" class="btn btn-success disabled">Send to {{company.company_name}}</a>
+                        <button type="button"  class="btn btn-default" style="float:right;margin-top:-20px;" data-dismiss="modal">Close</button>
+
+                        {% else %}
+                        
+                            <a href="{% url 'company:mail_to_company' company.slug job.slug %}" type="submit" style="float:right;margin-top:-20px;" class="btn btn-success">Send to {{company.company_name}}</a>
+                            <button type="button"  class="btn btn-default" style="float:right;margin-top:-20px;" data-dismiss="modal">Close</button>
+
+                        {% endif %}    
+                        
+       
+                    </div>
+
+                    <div class="modal-body" style="margin-top:-20px;">
+                        {% include 'company/shortlisted_form.html' with applications=applications time=time %}
+                    
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+
+    {% endfor %}
+
+
+
+        <!-- pagination from here -->        
+
+    <div class="pagination" style="float:right;">
+                <span class="step-links">
+          {% if applications.has_previous %}
+            <a href="?page={{applications.previous_page_number}}">Previous</a>
+          {% endif %}  
+
+          <span class="current">
+            Page{{applications.number}} of {{applications.paginator.num_pages}}.
+          </span>
+
+          {% if applications.has_next %}
+            <a href="?page={{applications.next_page_number}}">Next</a>
+
+          {% endif %}
+        
+        </span>
+    </div> 
+             
+
+	
+
+  
+{% endblock %}
+
+

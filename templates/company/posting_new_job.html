@@ -1,0 +1,257 @@
+{% extends "profile/team_leader_profile2.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+    <link rel="stylesheet" href="{% static 'css/team_leader.css' %}">
+    <script   src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script type='text/javascript' src = "{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript"  src="{% static 'jquery-autosuggest/js/jquery.autoSuggest.minified.js' %}"></script>
+    <link href="{% static 'jquery-autosuggest/css/autoSuggest.css' %}" type="text/css" media="all" rel="stylesheet" />
+
+{% endblock %}
+
+
+
+{% block js_block %}
+  
+    <script src="{% static 'js/tinymce/js/tinymce/tinymce.min.js'%}" type="text/javascript"></script>
+    <script src="{% static 'js/tinymce/js/tinymce/jquery.tinymce.min.js'%}" type="text/javascript"></script>
+
+
+    <script>
+        $(function()
+        {
+            $(".preview").click(function () {
+                var form_data=$("form").serializeArray();
+                form_data=JSON.stringify(form_data);
+                alert(form_data);
+                $.ajax({
+                    url: '/jobs/preview/',
+                    data: {'form_data':form_data},
+                    //cache: false,
+                    type: 'post',
+                    beforeSend: function () {
+                    $("#preview .modal-body").html("<div style='text-align: center; padding-top: 1em'><img src='/static/images/loading.gif'></div>");
+                    },
+                    success: function (data) {
+                        $("#preview .modal-body").html(data);
+                    }
+                });
+            });
+
+            $('#add_new_designation').click(function(){
+                //alert('adding new designation')
+                var designation_name=$('#designation').val();
+                //alert(designation_name);
+                $.ajax({
+                    url: '/ajax/add_designation/',
+                    data: {'designation_name':designation_name},
+                    //cache: false,
+                    type: 'post',
+                   
+                    success: function (data) {
+                        var jsondata=data;
+                        if(typeof jsondata == 'object'){
+                            if(jsondata['success'] == 'True'){
+                                var designation_name=jsondata['designation_name'];
+                                alert(designation_name + 'added');
+                            }
+                            else{
+                                alert(jsondata['exception'])
+                            }
+                        }
+                        else{
+                            alert('response is not a jsonresponse');
+                        }
+
+                    }
+                })
+            });
+
+
+            $('#add_new_city').click(function(){
+                //alert('adding new designation')
+                var city_name=$('#city').val();
+                //alert(designation_name);
+                $.ajax({
+                    url: '/ajax/add_city/',
+                    data: {'city_name':city_name},
+                    //cache: false,
+                    type: 'post',
+                   
+                    success: function (data) {
+                        var jsondata=data;
+                        if(typeof jsondata == 'object'){
+                            if(jsondata['success'] == 'True'){
+                                var city_name=jsondata['city_name'];
+                                alert(city_name + 'added');
+                            }
+                            else{
+                                alert(jsondata['exception'])
+                            }
+                        }
+                        else{
+                            alert('response is not a jsonresponse');
+                        }
+
+                    }
+                })
+            });
+
+
+        });
+            
+    </script>
+
+   
+
+{% endblock %}
+
+
+
+{% block extra %}
+        <div class="container-fluid"> 
+            <div class="nav navbar-default">
+                <ul class="nav navbar-nav">
+
+                    <li><a href="{% url 'user_profile:logged_in_user' user.username %}">Dashboard</a></li>
+                    <li><a href="{% url 'jobseeker:matching_profile' %}"></i>Profiles</a></li>
+                    <li class="active"><a href="{% url 'jobs:posting_new_job' %}">Post A job</a></li>
+           
+
+                </ul>
+
+                <ul class="nav navbar-nav" style="margin-left:350px;">
+                    {% if user.is_authenticated %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" id="user-dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>{{ user.username }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                  <li><a id="user-dropdown-item-sign-out" href="{% url 'company:create_profile' %}"><i class="fa fa-edit"></i>Create Company Profile</a></li>
+                             
+                                  <li><a id="user-dropdown-item-sign-out" href="/accounts/logout/"><span class="glyphicon glyphicon-off" style="padding:10px;"></span>Sign out</a></li>
+                            </ul>
+                        </li>
+             
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    
+
+{% endblock %}
+
+{% block main %}
+    
+    <div class="col-md-3 input-group pull-right form-group" >
+        <span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+        <input type="text" class="filter form-control" placeholder="What you looking for?">
+    </div>
+
+    <div class="container posting_new_job_form">
+        <h3 style="text-decoration:underline;color:orange;">Job Detail</h3>
+        <div class="well posting_new_job_wrapper">
+            <form action=""  method="post" enctype="multipart/form-data" role="form">
+            {% csrf_token %}
+
+           <!--  {{form|crispy}} -->
+
+           
+                {% for field in form.visible_fields %}
+                    <div class="form-group{% if field.errors %} has-error{% endif %}">
+                        <label for="{{ field.label }}">{{ field.label }}</label>
+                        <!-- {% if field.label == 'Description' %}
+                            {% include 'markdown_editor.html' with textarea='id_job_desc' %}
+                        {% endif %} -->
+                        {% if field.label == 'Location' %}
+                            <button type="button" data-toggle="modal" data-target="#add_city" class="btn btn-warning" style="float:right;">Add City</button>
+                         {% endif %} 
+
+                         {% if field.label == 'Job Title' %}
+                            <button type="button" data-toggle="modal" data-target="#add_designation" class="btn btn-success" style="float:right;">Add Designation</button>
+                         {% endif %}
+
+                        {{ field }}
+                        {% if field.help_text %}
+                            <span class="help-block">{{ field.help_text|safe }}</span>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <label class="control-label">{{ error }}</label>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+
+           
+
+                {{ form.media }}
+          
+                <button type="submit" class="btn btn-success btn-lg ">Post Job</button>
+                <button type="button" class="btn btn-default preview" data-toggle="modal" data-target="#preview">{% trans 'Preview' %}</button>
+                    <a href="" class="btn btn-default">{% trans 'Cancel' %}</a>
+            </form>
+        </div>
+    </div>
+
+
+      <div class="modal fade" id="preview">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Article Preview</h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- add new city -->
+
+    <div class="modal fade" id="add_city">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"><span class="glyphicon glyphicon-map-marker"></span>&nbsp;&nbsp;Add new City</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="city" placeholder="Enter a city name">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="add_new_city" class="btn btn-success">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- add new designation -->
+
+    <div class="modal fade" id="add_designation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-certificate"></i>&nbsp;&nbsp;Add new Designation</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="designation" placeholder="Enter a designation name">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                     <button type="submit" id="add_new_designation" class="btn btn-success">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

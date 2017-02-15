@@ -1,0 +1,29 @@
+<div class="edit_preferred_candidate_form_container">
+    <form method="post"  action="" enctype="multipart/form-data" role="form">
+        {% csrf_token %}  
+        {% for field in form.visible_fields %}
+            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                <label for="{{ field.label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <span class="help-block">{{ field.help_text|safe }}</span>
+                {% endif %}
+                {% for error in field.errors %}
+                    <label class="control-label">{{ error }}</label>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <div class="form-group">
+            <button style="float:right;" type="submit" class="btn btn-warning">Submit</button>
+    
+        </div>
+    </form> 
+        
+        <div class="model-footer">
+            <button type="button" style="margin-left:400px;" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+
+</div>
+
+   

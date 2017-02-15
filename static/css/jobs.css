@@ -1,0 +1,15 @@
+.posting_new_job_form .posting_new_job_wrapper{
+	width:80%;
+	margin:20px auto;
+}
+
+.posting_new_job_form .job_heading{
+	text-decoration: underline;
+}
+
+
+.wmd-panel{
+    margin-left:0px !important;
+    margin-right:0px !important;
+    
+}

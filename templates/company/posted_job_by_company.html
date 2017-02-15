@@ -1,0 +1,62 @@
+{% extends "profile/team_leader_profile2.html" %}
+
+{% load staticfiles %}
+
+{% block head %}
+   <link rel="stylesheet" href="{% static 'css/company/posted_job.css' %}">
+{% endblock %}
+
+{% block js_block %}
+    <script type="text/javascript">
+      
+        $(document).ready(function () {
+            $('input.filter').on('keyup', function() {
+                var rex = new RegExp($(this).val(), 'i');
+                $('.searchable tr').hide();
+                $('.searchable tr').filter(function() {
+                    return rex.test($(this).text());
+                }).show();
+            });
+        });
+    </script>
+{% endblock %}
+
+
+{% block main %}
+
+    <div class="col-md-3 input-group pull-right form-group" >
+                <span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                <input type="text" class="filter form-control" placeholder="What you looking for?">
+            </div>
+   <h3>Posted Jobs By <a href="{{company.get_absolute_url}}"><span style="color:green;text-decoration:underline;">{{company.company_name}}</span></a></h3>
+
+
+    <div class="container posted_job_container">
+        {% ifequal job_list|length 0 %}
+            <h4>No Job Posted Yet....</h4>
+        {% else %}  
+            {% for job in job_list %}
+                <div class="posted_job_wrapper">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h4>{{job.job_title|title}}({{job.job_min_exp}} - {{job.job_max_exp}} Years of Experirnce)</h4>
+                            <small>
+                                <i style="color:red; margin-left:20px;"class="fa fa-bookmark"></i>{{job.job_type}}|&nbsp;
+                                {{job.current_designation}}
+
+                            </small>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <a href="{% url 'company:job_detail' job.company.slug job.slug %}" type="button" class="btn btn-info btn-view-more">View More</a>
+                        </div>
+                    </div> 
+
+                </div>     
+
+            {% endfor %} 
+        {% endifequal %} 
+
+    </div>    
+ 
+{% endblock %}

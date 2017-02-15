@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+
+{% load staticfiles i18n %}
+
+{% block head %}
+  <link href="{% static 'css/user_profile/signup.css' %}" rel="stylesheet">
+{% endblock  %}
+
+{% block center_block %}
+  <div class="signup">
+    <h2>Signup</h2>
+    <form action="{% url 'user_profile:signup' %}" method="post" role="form">
+      {% csrf_token %}
+      {% for field in form.visible_fields %}
+        <div class="form-group{% if field.errors %} has-error{% endif %}">
+          <label for="{{ field.label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.help_text %}
+            <span class="help-block">{{ field.help_text|safe }}</span>
+          {% endif %}
+          {% for error in field.errors %}
+            <label class="control-label">{{ error }}</label>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+          
+      <button type="submit" class="btn btn-success ">{% trans 'Register' %}</button>
+
+      <p>Already have an account ? <a href="/accounts/login/">Click here</a> to login</p>
+
+
+    </form>
+  </div>
+{% endblock  %}
+
+
+
+

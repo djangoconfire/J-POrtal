@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    
+    <link rel="stylesheet" href="{% static 'css/recruiter/dashboard.css'%}">
+{% endblock %}
+
+{% block js_block %}
+  
+
+{% endblock %}
+
+
+
+    {% block extra %}
+          <div class="container-fluid"> 
+              <div class="nav navbar-default">
+                  <ul class="nav navbar-nav">
+                     <li class="active"><a href="{% url 'user_profile:logged_in_user' user.username %}">Dashboard</a></li>
+             
+
+                  </ul>
+
+                  <ul class="nav navbar-nav" style="margin-left:650px;">
+                      {% if user.is_authenticated %}
+                          <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" id="user-dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>{{ user.username }} <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a id="user-dropdown-item-sign-out" href="/accounts/logout/"><span class="glyphicon glyphicon-off" style="padding:10px;"></span>Sign out</a></li>
+                                </ul>
+                          </li>
+               
+                      {% endif %}
+                  </ul>
+              </div>
+          </div>
+
+    {% endblock %}
+
+  {% block center_block %} 
+          
+
+        <div class="col-md-3 input-group pull-right form-group" >
+            <span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+            <input type="text" class="filter form-control" placeholder="What you looking for?">
+        </div>  
+
+        <h3 style="margin-top:100px;"> Recently posted Jobs</h3> 
+
+    {% for job in jobs %}
+
+            <div class="posted_job_wrapper">
+                <div class="row">
+                    <div class="col-sm-12">
+                        {% if job.job_title != None %}
+                          <h6 style="margin-left:60px;"><a style="color:green;" href="{% url 'company:job_detail' job.company.slug job.slug %}">{{job.job_title.position|title}}&nbsp;({{job.job_min_exp}} -  {{job.job_max_exp}} Years of Experience)</a></h6>
+                        {% endif %}
+
+                        <img src="{{job.company.company_logo.url}}" style="width:50px;height:30px;border-radius:60px;margin-top:-10px;">
+                       
+                        <small style="margin-left:30px;" >
+                          <a href="">{{ job.company.company_name|title }}</a>
+
+                          <i class="fa fa-map-marker" style="margin-left:10px;"></i><span style="color:green;margin-left:5px;">{{ job.job_location|title }}</span><br/>
+
+                          <strong style="margin-left:85px;">Key Skills:-</strong> 
+                          {% for skill in job.job_skills.all %}
+                                {% if job.job_skills.all.count > 0 %}
+                                <span style="margin-left:5px;color:green;">{{skill.name}},</span>
+                                {% else %}
+                                <span style="margin-left:10px;color:green;">{{skill.name}}</span>
+                                {% endif %}
+                          {% endfor %}
+
+                        </small>
+                        <br/>
+
+                        <small style="margin-left:50px;padding:14px;" >
+                          <a href="{% url 'jobseeker:preferred_candidate' job.slug %}">Preferred Candidates<span class=" common_notification preferred_notification">{{job.preferred_candidates}}</span></a> |&nbsp;&nbsp;&nbsp;</a>
+
+                          <i style="color:#992417;" class="fa fa-users" aria-hidden="true"></i>
+                          <a href="{% url 'jobseeker:preferred_interested_candidate' job.slug %}">Interested Candidates<span class="common_notification interested_notification">{{job.interested_candidates}}</span></a>
+.
+
+                         
+                          <i class="fa fa-graduation-cap" aria-hidden="true"></i><a href="{% url 'company:company_shortlisted_candidates' job.company.slug job.slug %}">Company Shortlisted Candidates<span class=" common_notification final_shortlisted_notification">{{job.final_shortlisted_candidates}}</span></a> |&nbsp;&nbsp;&nbsp; 
+
+
+
+
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i><a href="">Interview Time Slot</a> |&nbsp;&nbsp;&nbsp; 
+
+                        Current Status
+
+                        </small>
+                    </div>
+
+                  
+                </div> 
+
+            </div>     
+
+              
+          
+      {% endfor %}
+
+
+          <div class="pagination" style="float:right;">
+            <span class="step-links">
+                {% if jobs.has_previous %}
+                  <a href="?page={{jobs.previous_page_number}}">Previous</a>
+                {% endif %}  
+
+                <span class="current">
+                  Page{{jobs.number}} of {{jobs.paginator.num_pages}}.
+                </span>
+
+                {% if jobs.has_next %}
+                  <a href="?page={{jobs.next_page_number}}">Next</a>
+
+                {% endif %}
+              
+              </span>
+          </div>     
+          
+    </div>
+      
+      
+
+    </div>
+         
+      
+  {% endblock %}

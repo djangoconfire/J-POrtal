@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load i18n %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/jobseeker/matching_profile.css' %}">
+    <!--<script   src="https://code.jquery.com/jquery-3.0.0.min.js"></script>-->
+    <script type='text/javascript' src = "{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript"  src="{% static 'jquery-autosuggest/js/jquery.autoSuggest.minified.js' %}"></script>
+    <link href="{% static 'jquery-autosuggest/css/autoSuggest.css' %}" type="text/css" media="all" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+
+{% endblock %}
+
+{% block js_block %}
+  
+
+{% endblock %}
+
+{% block center_block %}
+    <div class="container jobseeker_profile_container">
+        <div class="cover-picture log-cover-picture" style="background-image: url({{profile.profile_cover_pic.url }})">
+        </div>
+
+        <div class="tabs-or-stats-bar">
+            <div class="container">
+                <div class="col-lg-2">
+                    <div class="row"></div>
+                </div>
+                <div class="col-lg-10">
+                
+                    <div class="tabs-or-stats-container">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#address">Address</a></li>
+                            <li><a data-toggle="tab" href="#education">Education</a></li>
+                            <li><a data-toggle="tab" href="#skill">Skill</a></li>
+                            <li><a data-toggle="tab" href="#experience">Experience</a></li>
+                        </ul>
+
+                        <div class="tabs-content">
+
+                            <div id="address" class="tab-pane fade in active">
+                              {{profile.address}}
+                            </div>
+
+                            <div id="education" class="tab-pane fade">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Qualifications</th>
+                                            <th>University/Institute Name</th>
+                                            <th>Tier 1</th>
+                                            <th>Passing_Year</th>
+                                            
+                                        </tr> 
+                                    <thead>    
+
+                                    <tr>
+                                        <td>{{profile.ug_course}}<td>
+                                        <td>{{profile.ug_institute_name}}<td>
+                                        <td>{{profile.current_designation}}<td>
+                                        <td>{{profile.ug_passing_year}}<td>    
+                                        <td>{{profile.pg_course}}<td>
+                                        <td>{{profile.pg_institute_name}}<td>
+                                        <td>{{profile.current_designation}}<td>
+                                        <td>{{profile.pg_passing_year}}<td>    
+                                    </tr>  
+                                </table>    
+                            </div>
+
+                            <div id="skill" style="margin-top:4px;"class="tab-pane fade">
+                                {% for skill in profile.skills.all %}
+                                    {{skill}}
+
+                                {% endfor %}
+                              
+                            </div>
+
+                            <div id="experience" class="tab-pane fade">
+                                Work Experience - {{profile.work_exp}} Years<br/>
+                                Analytics in  Experience - {{profile.analytics_in_exp}} Years
+                                 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+    
+    <div class="container main-user-container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="profile-picture-container">
+                    <img class="profile-picture" src="{{profile.profile_photo.url}}">
+                </div>
+
+                <!-- <a  href="" data-toggle="modal" data-target="#send_email" ><button class="btn btn-warning btn-send-mail">Send Mail</button></a> --> 
+
+
+                
+  
+
+                <!--<a href="" type="button" class="btn btn-info btn-send-message">Send Message</a>-->
+                <p class="full-name">{{ profile.name }}</p>
+                <p class="username">@{{ profile.name }}</p>
+                <a href="" type="button" data-toggle="modal" data-target="#update_profile" style="margin-left:40px;" class="btn btn-success">Update Profile</a>
+        
+            </div>
+
+            {% comment %}
+
+            <div class="col-lg-9">
+                <a href="{% url 'jobseeker:send_mail' profile.slug job.slug %}"><button class="btn btn-warning btn-send-mail">Send Mail</button></a>
+            </div>
+
+            {% endcomment %}
+            
+        </div>  
+    
+    </div>
+        <!-- Sending mail  -->
+        <div class="modal fade" id="send_email">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Send Mail</h4>
+                         <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                       
+                    </div>
+
+                    <div class="modal-body">
+                        
+                        {% include "company/email_me_form.html" with email_me_form=form %}
+                        
+                 
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+
+       <!-- Update Profile-->
+        <div class="modal fade" id="update_profile">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="padding:10px;margin-top:10px;">Update Profile</h4>
+                         <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                       
+                    </div>
+
+                    <div class="modal-body">
+                        
+                        {% include "jobseeker/update_profile.html" with profile=profile update_profile_form=update_profile_form %}
+                        
+                 
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+                
+    </div>      
+   
+
+{% endblock %}

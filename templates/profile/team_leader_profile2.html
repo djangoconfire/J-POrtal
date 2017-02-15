@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/team_leader.css' %}">
+{% endblock %}
+
+{% block js_block %}
+  <script type="text/javascript" src="{% static 'js/team_leader.js' %}"></script>
+
+        <script type="text/javascript">
+
+            $(function(){
+
+              $('.input-search').autocomplete("/company/search/'")
+
+            //     var searchVal=$('#input_search').val();
+            //     $('#input_search').keyup(function(){
+
+            //     $.ajax({
+
+            //         url: '/company/search/',
+            //         type:'post',
+                  
+            //         data:{
+            //               'search_text':searchVal ,
+            //               'csrfmiddlewaretoken':$("input[name=csrfmiddlewaretoken]").val()
+            //             },
+      
+            //         success:function(data){
+            //             $('#search_results').html(data);
+                      
+            //             }      
+
+            //     });
+
+            // });
+        });
+
+
+        </script>
+
+{% endblock %}
+
+  {% block extra %}
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+                      <li class="active"><a href="{% url 'user_profile:logged_in_user' user.username %}">Dashboard</a></li>
+                      <li><a href="{% url 'jobseeker:matching_profile' %}"></i>Profiles</a></li>
+            <li><a href="{% url 'jobs:posting_new_job' %}">Post A job</a></li>
+                
+                </ul>
+
+                    <ul class="nav navbar-nav" style="margin-left:350px;">
+                        {% if user.is_authenticated %}
+                            <li class="dropdown">
+
+                                <a href="#" class="dropdown-toggle" id="user-dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>{{ user.username }} <span class="caret"></span></a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a id="user-dropdown-item-sign-out" href="{% url 'company:create_profile' %}"><i class="fa fa-edit"  style="padding:10px;"></i>Create Company Profile</a></li>
+                               
+                                  <li><a id="user-dropdown-item-sign-out" href="/accounts/logout/"><span class="glyphicon glyphicon-off" style="padding:10px;"></span>Sign out</a></li>
+
+                                </ul>
+                            </li>
+               
+                        {% endif %}
+
+                    </ul>
+          <!-- <ul class="nav navbar-nav">
+             <li><a href="http://analyticsvidhya.com/blog/">Blog</a></li>
+            <li><a href="/jobs_detail/">Jobs</a></li>
+            <li><a href="http://discuss.analyticsvidhya.com/">Discuss</a></li>
+            <li><a href="http://www.analyticsvidhya.com/learning-paths-data-science-business-analytics-business-intelligence-big-data/">Learning Paths</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right" style = "margin-right:75px;">
+            <li><a href="/users">Community</a></li>
+             <li><a href="/contest/all">Hackathons</a></li>
+                  {%if not request.user.is_anonymous%}
+                    {% if request.user.userprofile %} 
+                    <li class="" title = "Notifications">
+                      <a role="button" class="dropdown-toggle" >
+                      <i class = "fa fa-bullhorn" style = "font-size:20px;margin-right:2px;"></i><span class="badge" id = "notification_count"></span><span class = "hidden-md hidden-lg" style = "padding-left:20px;">Notifications</span>
+                  </a>
+
+                    </li>
+
+                    <li class="" title = "Messages">
+                      <a role="button" class="dropdown-toggle" href = "/teams/invites">
+                      <i class = "fa fa-comments" style = "font-size:20px;margin-right:2px;"></i><span class="badge" style = "color:white;background-color:#337ab7;" id = "message_count"></span><span class = "hidden-md hidden-lg" style = "padding-left:20px;">Messages</span>
+                      </a>
+
+                    </li>
+
+                    {%endif%}
+
+            {%endif%}
+          </ul>
+           -->
+        </div><!-- /.navbar-collapse -->
+        
+  {% endblock %}
+
+
+{% block center_block %}
+
+ 
+
+ 
+  {% block main %} 
+
+       <div class=" team_leader_profile_form">
+          <div class="main-leaderboard-container">
+                <div class="search-form">
+                      <input class="input-search" id="input_search" type="text" value=""  placeholder="Search company by name  "  required="">
+                   
+                      <button class="button-search"><img class="image-search" src="{% static 'images/search.png' %}"></button>
+
+                      <!-- <ul style="width:700px;height:auto;background-color:#fafafa;padding:0px;border-radius:5px;"id="search_results"></ul> -->
+
+                </div>
+          </div>
+
+
+    <h3 style="margin-top:60px;"> Recent Activity</h3>      
+
+        {% for job in jobs %}
+
+            <div class="container-fluid posted_job_wrapper">
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        {% if job.job_title != None %}
+                          <h6 style="margin-left:60px;"><a style="color:green;" href="{% url 'company:job_detail' job.company.slug job.slug %}">{{job.job_title.position|title}}&nbsp;({{job.job_min_exp}} -  {{job.job_max_exp}} Years of Experience)</a></h6>
+                        {% endif %}
+
+                        <img src="{{job.company.company_logo.url}}" style="width:50px;height:30px;border-radius:60px;margin-top:-10px;">
+                       
+                        <small style="margin-left:30px;" >
+                            <a href="{{job.company.get_absolute_url}}">{{ job.company.company_name|title }}</a>
+
+                            <i class="fa fa-map-marker" style="margin-left:10px;"></i><span style="color:grey;margin-left:5px;">{{ job.job_location|title }}</span>
+
+
+                            <i class="fa fa-inr" style="margin-left:10px;"></i><span style="color:grey;margin-left:5px;">{{ job.job_min_ctc }} - {{job.job_max_ctc}} lacs</span><br/>
+
+                            <strong style="margin-left:85px;">Key Skills:-</strong> 
+                            {% for skill in job.job_skills.all %}
+                                {% if job.job_skills.all.count > 0 %}
+                                    <span style="margin-left:5px;color:grey;">{{skill.name}},</span>
+                                {% else %}
+                                    <span style="margin-left:10px;color:grey;">{{skill.name}}</span>
+                                {% endif %}
+                            {% endfor %}
+
+                        </small>
+                        <br/>
+
+                        <small style="margin-left:50px;padding:14px;" >
+                            <!-- <a href="{% url 'jobseeker:preferred_candidate' job.slug %}">Preferred Candidates<span class=" common_notification preferred_notification">{{job.preferred_candidates}}</span></a> |&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp; -->
+
+                            <i style="color:#992417;" class="fa fa-users" aria-hidden="true"></i>
+                            <a href="{% url 'jobseeker:interested_candidate' job.slug %}">Interested Candidates<span class="common_notification interested_notification">{{job.interested_candidates}}</span></a>
+
+                                      
+
+                            |&nbsp;&nbsp;&nbsp;<i class="fa fa-graduation-cap" aria-hidden="true"></i><a href="{% url 'jobseeker:shortlisted_candidate' job.company.slug job.slug %}">Shortlisted Candidates<span class="common_notification shortlisted_notification">{{job.shortlisted_candidates}}</span></a> |&nbsp;&nbsp;&nbsp; 
+
+
+                            <i class="fa fa-graduation-cap" aria-hidden="true"></i><a href="{% url 'company:final_shortlisted_candidates' job.company.slug job.slug %}">Company Shortlisted Candidates<span class="common_notification final_shortlisted_notification">{{job.final_shortlisted_candidates}}</span></a> |&nbsp;&nbsp;&nbsp; 
+
+
+                            <a href="">Interview Time Slot</a>
+
+                            
+
+                      </small>
+                      <div class='container' style="margin-left:20px;">
+                        <small>
+                          <span style="color:green;margin-left:30px;">Published on</span>:&nbsp;&nbsp; <i class="fa fa-calendar"></i>&nbsp;{{job.pub_date}}  
+                          <span style="color:orange;"> &nbsp;&nbsp;&nbsp;Last Updated: </span>&nbsp;&nbsp; <i class="fa fa-calendar"></i>&nbsp;{{job.last_updated_date}}
+                        </small>
+                      </div>
+                    </div>
+                </div> 
+            </div>     
+
+        {% endfor %}
+
+        <!-- Pagination starts from here... -->
+
+        <div class="pagination" style="float:right;">
+            <span class="step-links">
+                {% if jobs.has_previous %}
+                    <a href="?page={{jobs.previous_page_number}}">Previous</a>
+                {% endif %}  
+
+                <span class="current">
+                    Page{{jobs.number}} of {{jobs.paginator.num_pages}}.
+                </span>
+
+                {% if jobs.has_next %}
+                    <a href="?page={{jobs.next_page_number}}">Next</a>
+
+                {% endif %}
+            
+            </span>
+        </div>     
+            
+    </div>
+      
+            
+    {% endblock %}
+
+{% endblock %}

@@ -1,0 +1,348 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/jobseeker/preferred_candidate.css' %}">
+{% endblock %}
+
+
+{% block js_block %}
+
+    <script type="text/javascript" src="{% static 'js/jobseeker/interested_jobseeker.js' %}"></script>
+
+
+
+    <script type="text/javascript">
+
+        function show_more_data(current_employer,current_designation,ctc,jobseeker_name)
+        {
+            var show_more_data_div="<div class='panel panel-primary'><div class='panel-heading'>More Data</div><div class='panel-body'><div class='row'><div class='col-sm-3'><strong>Current Employer</strong><br/> " + current_employer + "</div><div class='col-sm-3'><strong>Current Designation</strong><br/>" + current_designation + "</div><div class='col-sm-3'><strong>CTC(Lacs)</strong><br/>" + ctc + "</div></div></div></div>";
+            $('#show_more_data .modal-title').html("<span style='color:green;'>" +jobseeker_name + "</span>");
+            $('#show_more_data .modal-body').html(show_more_data_div);
+
+                
+        }
+
+
+
+        function see_more(application_id){
+            return function(event)
+            {
+                event.preventDefault();
+                $.post('/company/see_more',{id:application_id},function(response)
+                {
+                    //alert('inside response');
+                    var jsondata=response;
+
+                    if(typeof jsondata == 'object')
+                    {
+                        //alert('inside checking jsondata type');
+                        if(jsondata['success'] == 'True')
+                        {
+                            var current_employer=jsondata['current_employer'];
+                            var current_designation=jsondata['current_designation'];
+                            var ctc=jsondata['ctc'];
+                            var jobseeker_name=jsondata['jobseeker_name'];
+                            // var relavant_skill=jsondata['relavent_skill'];
+                            //$('#see_more-'+ application_id).css('background-color','#337ab7')
+                            show_more_data(current_employer,current_designation,ctc,jobseeker_name);
+                        }
+
+                        else if(jsondata['success']== 'False')
+                        {
+                            if(jsondata['message'])
+                            {
+                                alert(jsondata['message']);
+                            }
+                            else
+                            {
+                                alert('candidate has not been successfully saved');
+                                alert(jsondata['exception']);
+                            }
+
+                        }
+                    }    
+                    
+                    else
+                    {
+                        alert('invalid json response has been returned');
+                    }
+
+                
+                });
+          
+            }
+
+        }  
+
+        function sendform_select(application_id){
+            //alert('inside selection procedure.');
+            return function(event)
+            {
+                event.preventDefault();
+                //alert("Inside function");
+                $.post('/company/candidate_selection',{id:application_id},function(response)
+                {
+                   // alert("Inside response");
+                    var jsondata=response;
+                    if(typeof jsondata=='object')
+                    {
+                        if(jsondata['success']=='True')
+                        {
+                            $('#select-'+ application_id).css('background-color','green');
+                            $('#reject-'+application_id).css('background-color','#337ab7');
+
+                            //alert("ajax done");
+
+                        }
+                        else
+                        {
+                            alert("Not a jsonresponse");
+                            alert(jsondata['exception']);
+                        }  
+                    }             
+                    else
+                    {
+                        alert("response having no success attribute");
+                    }
+
+                });
+            }    
+            
+        }
+
+        function sendform_reject(application_id)
+        {
+            
+            return function(event)
+            {  
+                event.preventDefault(); 
+                $.post('/company/candidate_rejection',{id:application_id},function(response)
+                {
+                    alert("Inside response");
+                    var jsondata=response;
+                    if(typeof jsondata=='object')
+                    {
+                        if(jsondata['success']=='True')
+                        {
+                           $('#reject-'+application_id).css('background-color','red');
+                            $('#select-'+ application_id).css('background-color','#337ab7');
+
+
+                            //alert("The ajax request has been successful");
+
+                        }
+                        
+                        else
+                        {
+                            alert("The returned jsonresponse is False");
+                        } 
+                    }              
+                        
+                    else
+                    {
+                        alert("returned response having no success attribute");
+                    }
+                        
+
+                });
+            }
+        }
+
+
+        $(document).ready(function(){
+
+            var application_ids_list = JSON.parse(" {{ application_id_list|escapejs }}");
+      
+            for(id in application_ids_list)
+            {   
+                application_id =application_ids_list[id];
+                $('#select-'+application_id).on("click",sendform_select(application_id));
+
+            }
+        });
+
+
+           $(document).ready(function(){
+
+            var application_ids_list = JSON.parse(" {{ application_id_list|escapejs }}");
+      
+            for(id in application_ids_list)
+            {   
+                application_id =application_ids_list[id];
+                $('#see_more-'+application_id).click(see_more(application_id));
+
+            }
+        });
+
+
+
+
+        $(document).ready(function(){
+
+            var application_ids_list = JSON.parse(" {{ application_id_list|escapejs }}");
+      
+            for(id in application_ids_list)
+            {   
+                application_id =application_ids_list[id];;
+                $('#reject-'+application_id).click(sendform_reject(application_id));
+
+            }
+        });
+
+    </script>
+
+{% endblock %}
+
+
+
+{% block center_block %}
+
+    {% ifequal applications|length  0 %}
+
+       {% include 'no_candidate.html' %}
+
+    {% else %} 
+            
+        <h3 style="margin-top:30px;text-decoration:underline;color:orange;">List of Interested Candidates</h3>
+
+         <div class="col-md-3 input-group pull-right form-group" >
+            <span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+            <input type="text" class="filter form-control" placeholder="What you looking for?">
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <!-- <th>Profile Picture</th> -->
+                <th>Serial</th>
+                <th><i class="fa fa-user"><i>&nbsp;Candidate Name</th>
+                <th><i class="fa fa-phone"><i>&nbsp;Mobile Number</th>
+                <th><i class="fa fa-envelope"><i>&nbsp;Email</th>
+                <th>Experience</th>
+                <th><i class="fa fa-map-marker"><i>&nbsp;Current Location</th>
+                <th>Relocate(Yes/No)</th>
+                <th>Notice Period</th>
+                <th><i class="fa fa-file"><i>&nbsp;Resume</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                
+   
+            </tr>
+           </thead>
+            {% for application in applications %}
+                <tr class="searchable">
+                    <!-- <td><img src="{{application.jobseeker.profile_photo.url}}" style="width:40px;height:40px;border-radius:40px;margin-left:20px;"></td> -->
+                    <td>{{application.jobseeker.serial_number}}</td>
+                    <td><a href="{% url 'jobseeker:profile' application.jobseeker.slug %}">{{application.jobseeker.name|title}}</></td>
+                    <td>{{application.jobseeker.contact_number}}</td>
+                    <td>{{application.jobseeker.email}}</td>
+                    
+
+                    <td>{{application.jobseeker.work_exp}}</td>
+
+
+                    
+                    {% if application.jobseeker.current_location %}
+                        <td>{{application.jobseeker.current_location.city_name}}</td>
+                    {% else %}    
+                        <td>Not specified</td>
+                    {% endif %}
+
+                    <td>{{application.jobseeker.ready_to_relocate}}</td>
+                    <td>{{application.jobseeker.notice_period}}</td>
+                    
+                    
+
+                    
+                    {% if application.jobseeker.resume %}
+                        <td><a href="{% url 'jobseeker:resume' application.jobseeker.slug %}">Yes&nbsp;<i style="color:orange;" class="fa fa-download"></i></a></td>
+                        <td><a href = "" id="see_more-{{application.id}}" class = "btn btn-default" data-toggle="modal" data-target="#show_more_data">See More..</a></td>
+                    
+                    {% else %}
+
+                         <td>No</td>
+                         
+                         <td><a href = "" id="see_more-{{application.id}}" class = "btn btn-default" data-toggle="modal" data-target="#show_more_data" class = "btn btn-default">See More..</a></td>
+                         
+                     
+                    {% endif %}
+
+                    
+
+                    {% if application.is_shortlisted %}
+                        <td><a href = "#" class = "btn btn-success">Shortlisted</a></td>
+
+                        <td><a href = "#" id="reject-{{application.id}}" class = "btn btn-primary">Reject</a></td>
+
+
+
+                    {% elif application.is_rejected %}
+                             <td><a href = "#"  class = "btn btn-warning">Rejected</a></td> 
+                              <td><a href = "#" id="select-{{application.id}}" class = "btn btn-primary">Shortlist</a></td>   
+                             
+                    {% else %}
+
+                        <td><a href = "#" id="select-{{application.id}}" class = "btn btn-primary">Shortlist</a></td>
+
+                        <td><a href = "#" id="reject-{{application.id}}" class = "btn btn-primary">Reject</a></td>
+
+                    {% endif %}
+
+                
+
+                </tr>   
+
+            {% endfor %}
+
+            
+        </table>
+
+
+
+
+   
+
+        <!-- showing more data -->
+    <div class="modal fade" id="show_more_data">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="padding:10px;margin-top:10px;"></h4>
+                         <button type="button" style="float:right;" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                       
+                    </div>
+
+                    <div class="modal-body"></div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+
+         <!-- Pagination starts from here... -->
+
+    <div class="pagination" style="float:right;">
+      <span class="step-links">
+          {% if applications.has_previous %}
+            <a href="?page={{applications.previous_page_number}}">Previous</a>
+          {% endif %}  
+
+          <span class="current">
+            Page{{applications.number}} of {{applications.paginator.num_pages}}.
+          </span>
+
+          {% if applications.has_next %}
+            <a href="?page={{applications.next_page_number}}">Next</a>
+
+          {% endif %}
+        
+        </span>
+    </div> 
+</div>
+    {% endifequal%}
+  
+{% endblock %}
+
+
+    
